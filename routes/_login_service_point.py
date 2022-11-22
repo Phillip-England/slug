@@ -28,6 +28,7 @@ def login_service_point(engine):
 
     # clearing end of day alert and checking if page is loaded
     try:
+        time.sleep(1)
         pyautogui.press('enter')
         service_point_make_favorite_button = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.service_point_make_favorite_button_id)))
         print(f"Page loaded at {engine.config.service_point_url}")

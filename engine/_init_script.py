@@ -2,14 +2,13 @@ import os
 
 def init_script(self):
 
+    # intro message
     print("Initalizing Slug...")
-
-    self.options.add_experimental_option('detach', False)
-
 
     # clear all files here
     self.directories.dump(self.directories.screenshots)
     self.directories.dump(self.directories.master_logs)
+    self.directories.dump(self.directories.downloads)
     # os.system("rm /home/phillip/Downloads/'Daypart Activity Report.pdf'")
     # os.system("rm /home/phillip/Downloads/FullScale_Report.PDF")
 
@@ -20,4 +19,5 @@ def init_script(self):
     self.logger.master_log('Starting Automation Script')
 
     #initalizing our chrome browser driver
+    self.options.add_experimental_option('detach', True)
     self.get_driver()

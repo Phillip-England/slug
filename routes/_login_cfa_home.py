@@ -21,7 +21,7 @@ def login_cfa_home(engine):
 
     #entering password info
     try:
-        cfa_password_input = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.cfa_password_input_id)))   
+        cfa_password_input = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.cfa_password_input_id)))
         cfa_password_input.send_keys(os.environ.get('CFA_PASSWORD'))
         cfa_password_input.submit() # auth cookies are set here
         print(f"password successfully submitted at {engine.config.cfa_home_url}")

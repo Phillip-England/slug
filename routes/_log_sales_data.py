@@ -1,7 +1,7 @@
 import pyautogui
 import time
 
-def log_sales_data(self, engine):
+def log_sales_data(engine):
 
     #visiting our sales tracking google form
     engine.driver.get(engine.config.sales_tracking_form_url)

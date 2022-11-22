@@ -1,6 +1,6 @@
 import PyPDF2
 
-def extract_daypart_activity(self, engine):
+def extract_daypart_activity(engine):
 
     # pulling daypart activity report data from PDF
     report = open(engine.config.daypart_activity_default_download_path, 'rb')

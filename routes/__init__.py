@@ -14,8 +14,8 @@ class routes:
 
     def login_cfa_home(self, engine): login_cfa_home(engine)
     def login_service_point(self, engine): login_service_point(engine)
-    def daypart_activity(self, engine): daypart_activity(self, engine)
-    def extract_daypart_activity(self, engine): extract_daypart_activity(self, engine)
-    def log_sales_data(self, engine): log_sales_data(self, engine)
+    def daypart_activity(self, engine, start_date, end_date): daypart_activity(engine, start_date, end_date)
+    def extract_daypart_activity(self, engine): extract_daypart_activity(engine)
+    def log_sales_data(self, engine): log_sales_data(engine)
     def cem_report_builder(self, engine): cem_report_builder(self, engine)
     def extract_cem_scores(self, engine): extract_cem_scores(self, engine)

@@ -1,34 +1,36 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
 import pyautogui
 import time
-import os
-import PyPDF2
 
-def daypart_activity(self, engine):
 
-    # going to daypart activity report url
-    engine.driver.get(engine.config.daypart_activity_url)
-    engine.wait_for_color(engine.config.daypart_activity_wage_input_color, engine.config.daypart_activity_wage_input_cords, 'wage_input.png')
-    print("Daypart activity Page Loaded")
+def daypart_activity(engine, date):
 
-    # selecting proper start and end dates
-    start_date_dropdown = engine.driver.find_element(By.ID, engine.config.daypart_activity_start_date_id)
-    end_date_dropdown = engine.driver.find_element(By.ID, engine.config.daypart_activity_end_date_id)
-    start_date_dropdown.click()
-    time.sleep(1)
-    pyautogui.press('left')
-    pyautogui.press('enter')
-    end_date_dropdown.click()
-    time.sleep(1)
-    pyautogui.press('left')
-    pyautogui.press('enter')
-    time.sleep(1)
-    print("Date Range Selected for Daypart Activity")
+    try:
+        engine.driver.get(engine.config.daypart_activity_url)
+        start_date_input = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.daypart_activity_start_date_id)))
+        end_date_input = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.daypart_activity_end_date_id)))
+        submit_button = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.daypart_activity_submit_id)))
+        print(f'Page loaded at {engine.config.daypart_activity_url}')
+    except:
+        raise Exception(f'Failed to load page at {engine.config.daypart_activity_url}')
 
-    # clicking submit and downloading the report
-    submit_button = engine.driver.find_element(By.ID, engine.config.daypart_activity_submit_id)
-    submit_button.click()
-    time.sleep(1)
-    print("Daypart Activity Report Downloaded")
+    # we could go through and create a failsafe for this next section by comparing our user-defined date to the text inside the date elements. If the dates do not match, the bot was too quick and needs to rerun the next section
+
+    try:
+        start_date_input.click()
+        time.sleep(1)
+        pyautogui.write(date)
+        end_date_input.click()
+        time.sleep(1)
+        pyautogui.write(date)
+        time.sleep(1)
+        pyautogui.press('enter')
+        submit_button.click()
+        time.sleep(5)
+        print(f'Pdf {engine.config.daypart_activity_default_download_path} downloaded at {engine.config.daypart_activity_url}')
+    except:
+        raise Exception(f'Failed to download pdf at {engine.config.daypart_activity_url}')
 
 

@@ -8,6 +8,7 @@ class directories:
         self.screenshots = os.path.join(self.project, 'screenshots')
         self.logs = os.path.join(self.project, 'logs')
         self.master_logs = os.path.join(self.logs, 'master')
+        self.downloads = os.path.join(os.environ.get("HOME"), 'Downloads')
 
     def dump(self, path):
         files = glob.glob(os.path.join(path, '*'))
