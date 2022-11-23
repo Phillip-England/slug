@@ -6,6 +6,9 @@ class config:
 
         #global settings
         self.max_wait_time = 20
+        self.pyautogui_type_speed = 0.1
+        # determines how many times we will run an operation before exiting
+        self.max_loop = 5
 
         #cfa login settings
         self.cfa_home_url = 'https://www.cfahome.com'
@@ -27,6 +30,13 @@ class config:
         self.daypart_activity_end_date_id = 'MainContent_BusDate2_B-1Img'
         self.daypart_activity_submit_id = 'MainContent_btnGenerateButton'
         self.daypart_activity_default_download_path = os.path.join(os.environ.get('HOME'), 'Downloads', 'Daypart Activity Report.pdf')
+
+        # sales activity report settings
+        self.sales_activity_url = 'https://rsmw.cfahome.com/SMW18-00/CFASalesActivityReport.aspx'
+        self.sales_activity_date_input_id = 'MainContent_cfaCommonReportInputInterface1_startBusinessDateWithTime_I'
+        self.sales_activity_submit_id = 'MainContent_cfaCommonReportInputInterface1_btnGenerateButton'
+        self.sales_activity_default_download_path = os.path.join(os.environ.get('HOME'), 'Downloads', 'Sales Activity Report.pdf')
+
 
         # sales tracking google form settings
         self.sales_tracking_form_url = 'https://forms.gle/GuYmkRqdfRpgKSYB6'

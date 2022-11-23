@@ -71,14 +71,3 @@ def cem_report_builder(self, engine):
     cem_download_button.click()
     time.sleep(5)
     print('CEM Current Month PDF Downloaded - "FullScale_Report.PDF"')
-
-
-
-    # time.sleep(10)
-    # pyautogui.scroll(-10)
-    # pyautogui.click(engine.config.download_cem_data_button)
-    # time.sleep(5)
-    # pyautogui.click(engine.config.cem_pdf_option)
-    # time.sleep(5)
-    # pyautogui.scroll(-3)
-    # pyautogui.click(engine.config.download_cem_pdf_button)
