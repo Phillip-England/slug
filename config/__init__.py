@@ -29,6 +29,7 @@ class config:
         self.daypart_activity_start_date_id = 'MainContent_BusDate1_B-1Img'
         self.daypart_activity_end_date_id = 'MainContent_BusDate2_B-1Img'
         self.daypart_activity_submit_id = 'MainContent_btnGenerateButton'
+        self.daypart_activity_bad_day_id = 'InformationalPopup_HCB-1'
         self.daypart_activity_default_download_path = os.path.join(os.environ.get('HOME'), 'Downloads', 'Daypart Activity Report.pdf')
 
         # sales activity report settings

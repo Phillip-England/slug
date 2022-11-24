@@ -63,46 +63,20 @@ def extract_daypart_activity(engine):
                 total_data.append(data[i+x])
     
     # taking the data out of the lists and storing them in solid variables
-    business_date = f'{business_month} {business_day} {business_year}'
-    breakfast_sales = breakfast_data[4]
-    breakfast_trans = breakfast_data[3]
-    breakfast_check_avg = breakfast_data[5]
-    lunch_sales = lunch_data[4]
-    lunch_trans = lunch_data[3]
-    lunch_check_avg = lunch_data[5]
-    mid_sales = mid_data[4]
-    mid_trans = mid_data[3]
-    mid_check_avg = mid_data[5]
-    dinner_sales = dinner_data[4]
-    dinner_trans = dinner_data[3]
-    dinner_check_avg = dinner_data[5]
-    total_sales = total_data[2]
-    total_trans = total_data[1]
-    total_check_avg = total_data[3]
-
-    #constructing a dictionary to be attached to our engine for future use
-    sales_data =  {
-        'business_date': business_date,
-        'day_of_week': day_of_week,
-        'breakfast_sales': breakfast_sales,
-        'breakfast_check_average': breakfast_check_avg,
-        'breakfast_transactions': breakfast_trans,
-        'lunch_sales': lunch_sales,
-        'lunch_check_average': lunch_check_avg,
-        'lunch_transactions': lunch_trans,
-        'midshift_sales': mid_sales,
-        'midshift_check_average': mid_check_avg,
-        'midshift_transactions': mid_trans,
-        'dinner_sales': dinner_sales,
-        'dinner_check_average': dinner_check_avg,
-        'dinner_transactions': dinner_trans,
-        'total_sales': total_sales,
-        'total_check_average': total_check_avg,
-        'total_transactions': total_trans
-    }
-
-    #storing the dictionary into our engine
-    engine.data.set_previous_business_day_sales_data(sales_data)
-
-
-    
+    engine.data.date = f'{business_month} {business_day} {business_year}'
+    engine.data.day = day_of_week
+    engine.data.breakfast_sales = breakfast_data[4]
+    engine.data.breakfast_transactions = breakfast_data[3]
+    engine.data.breakfast_check_average = breakfast_data[5]
+    engine.data.lunch_sales = lunch_data[4]
+    engine.data.lunch_transactions = lunch_data[3]
+    engine.data.lunch_check_average = lunch_data[5]
+    engine.data.midshift_sales = mid_data[4]
+    engine.data.midshift_transactions = mid_data[3]
+    engine.data.midshift_check_average = mid_data[5]
+    engine.data.dinner_sales = dinner_data[4]
+    engine.data.dinner_transactions = dinner_data[3]
+    engine.data.dinner_check_average = dinner_data[5]
+    engine.data.total_sales = total_data[2]
+    engine.data.total_transactions = total_data[1]
+    engine.data.total_check_average = total_data[3]

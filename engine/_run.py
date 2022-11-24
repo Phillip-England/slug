@@ -15,11 +15,13 @@ def run(self):
             self.init_script()
             self.routes.login_cfa_home(self)
             self.routes.login_service_point(self)
-            # self.routes.daypart_activity(self, date)
-            # self.data.extract_daypart_activity(self)
-            self.routes.sales_activity(self, date)
+            self.routes.daypart_activity(self, date)
+            self.data.extract_daypart_activity(self)
+            # self.routes.sales_activity(self, date)
+            # self.data.extract_sales_activity(self)
             # self.routes.log_sales_data(self)
             self.driver.close()
+            print(vars(self.data))
 
     # current month CEMS
     if sys.argv[1] == '-c':

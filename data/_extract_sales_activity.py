@@ -117,13 +117,13 @@ def extract_sales_activity(engine):
         if data[i] == pickup_indicators and pickup_sales == str:
             pickup_sales = data[i-pickup_steps]
 
-    print(carryout_sales)
-    print(cfa_delivery_sales)
-    print(delivery_sales)
-    print(dine_in_sales)
-    print(drive_thru_sales)
-    print(m_carryout_sales)
-    print(m_dine_in_sales)
-    print(m_drive_thru_sales)
-    print(on_demand_sales)
-    print(pickup_sales)
+    engine.data.carryout_sales = carryout_sales
+    engine.data.cfa_delivery_sales = cfa_delivery_sales
+    engine.data.delivery_sales = delivery_sales
+    engine.data.dine_in_sales = dine_in_sales
+    engine.data.drive_thru_sales = drive_thru_sales
+    engine.data.m_carryout_sales = m_carryout_sales
+    engine.data.m_dine_in_sales = m_dine_in_sales
+    engine.data.m_drive_thru_sales = m_drive_thru_sales
+    engine.data.on_demand_sales = on_demand_sales
+    engine.data.pickup_sales = pickup_sales
