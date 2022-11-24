@@ -26,57 +26,82 @@ def extract_daypart_activity(engine):
 
     #this method does risk the program breaking if the pdf changes structure in the future, we may need to implement some sort of failsafe for this method if we experience and issues.
 
+    # date indicators
+    date_indicator = 'Time:From'
+    day_of_week_steps = 1
+    month_steps = 2
+    day_steps = 3
+    year_steps = 4
+
+    # breakfast indicators
+    breakfast_indicator = 'Breakfast'
+    breakfast_sales_steps = 4
+    breakfast_transaction_steps = 6
+    breakfast_check_average_steps = 5
+
+    # lunch indicators
+    lunch_indicator = 'Lunch'
+    lunch_sales_steps = 4
+    lunch_transaction_steps = 3
+    lunch_check_average_steps = 5
+
+    # midshift indicators
+    midshift_indicator = 'Afternoon'
+    midshift_sales_steps = 4
+    midshift_transaction_steps = 3
+    midshift_check_average_steps = 5
+
+    # dinner indicators
+    dinner_indicator = 'Dinner'
+    dinner_sales_steps = 4
+    dinner_transaction_steps = 3
+    dinner_check_average_steps = 5
+
+    # total indicators
+    total_indicator = 'Totals:'
+    total_sales_steps = 2
+    total_transaction_steps = 1
+    total_check_average_steps = 3
+
     # scraping the pdf for the data
     for i in range(len(data)):
 
         # data about the date
-        if data[i] == 'Time:From':
-            day_of_week_untrimmed = data[i+1]
+        if data[i] == date_indicator:
+            day_of_week_untrimmed = data[i+day_of_week_steps]
             day_of_week = day_of_week_untrimmed.rstrip(day_of_week_untrimmed[-1])
-            business_month = data[i+2]
-            business_day = data[i+3]
-            business_year = data[i+4]
+            business_month = data[i+month_steps]
+            business_day = data[i+day_steps]
+            business_year = data[i+year_steps]
+            engine.data.date = f'{business_month} {business_day} {business_year}'
+            engine.data.day = day_of_week
 
         #breakfast sales data
-        if data[i] == 'Breakfast':
-            for x in range(number_of_data_points):
-                breakfast_data.append(data[i+x])
+        if data[i] == breakfast_indicator:
+            engine.data.breakfast_sales = data[i + breakfast_sales_steps]
+            engine.data.breakfast_transactions = data[i + breakfast_transaction_steps]
+            engine.data.breakfast_check_average = data[i + breakfast_check_average_steps]
 
         #lunch sales data
-        if data[i] == 'Lunch':
-            for x in range(number_of_data_points):
-                lunch_data.append(data[i+x])
+        if data[i] == lunch_indicator:
+            engine.data.lunch_sales = data[i + lunch_sales_steps]
+            engine.data.lunch_transactions = data[i + lunch_transaction_steps]
+            engine.data.lunch_check_average = data[i + lunch_check_average_steps]
 
         #midshift sales data
-        if data[i] == 'Afternoon':
-            for x in range(number_of_data_points):
-                mid_data.append(data[i+x])
+        if data[i] == midshift_indicator:
+            engine.data.midshift_sales = data[i + midshift_sales_steps]
+            engine.data.midshift_transactions = data[i + midshift_transaction_steps]
+            engine.data.midshift_check_average = data[i + midshift_check_average_steps]
 
         #dinner sales data
-        if data[i] == 'Dinner':
-            for x in range(number_of_data_points):
-                dinner_data.append(data[i+x])
+        if data[i] == dinner_indicator:
+            engine.data.dinner_sales = data[i + dinner_sales_steps]
+            engine.data.dinner_transactions = data[i + dinner_transaction_steps]
+            engine.data.dinner_check_average = data[i + dinner_check_average_steps]
 
         #daily totals
-        if data[i] == 'Totals:' and data[i-1] == 'Report':
-            for x in range(number_of_data_points):
-                total_data.append(data[i+x])
-    
-    # taking the data out of the lists and storing them in solid variables
-    engine.data.date = f'{business_month} {business_day} {business_year}'
-    engine.data.day = day_of_week
-    engine.data.breakfast_sales = breakfast_data[4]
-    engine.data.breakfast_transactions = breakfast_data[3]
-    engine.data.breakfast_check_average = breakfast_data[5]
-    engine.data.lunch_sales = lunch_data[4]
-    engine.data.lunch_transactions = lunch_data[3]
-    engine.data.lunch_check_average = lunch_data[5]
-    engine.data.midshift_sales = mid_data[4]
-    engine.data.midshift_transactions = mid_data[3]
-    engine.data.midshift_check_average = mid_data[5]
-    engine.data.dinner_sales = dinner_data[4]
-    engine.data.dinner_transactions = dinner_data[3]
-    engine.data.dinner_check_average = dinner_data[5]
-    engine.data.total_sales = total_data[2]
-    engine.data.total_transactions = total_data[1]
-    engine.data.total_check_average = total_data[3]
+        if data[i] == total_indicator and data[i-1] == 'Report':
+            engine.data.total_sales = data[i + total_sales_steps]
+            engine.data.total_transactions = data[i + total_transaction_steps]
+            engine.data.total_check_average = data[i + total_check_average_steps]

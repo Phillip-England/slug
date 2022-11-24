@@ -21,6 +21,7 @@ class data:
         # dinner_check_average
         # carryout_sales
         # cfa_delivery_sales
+        # curbside sales
         # delivery_sales
         # dine_in_sales
         # drive_thru_sales

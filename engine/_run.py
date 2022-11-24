@@ -17,9 +17,9 @@ def run(self):
             self.routes.login_service_point(self)
             self.routes.daypart_activity(self, date)
             self.data.extract_daypart_activity(self)
-            # self.routes.sales_activity(self, date)
-            # self.data.extract_sales_activity(self)
-            # self.routes.log_sales_data(self)
+            self.routes.sales_activity(self, date)
+            self.data.extract_sales_activity(self)
+            self.routes.log_sales_data(self)
             self.driver.close()
             print(vars(self.data))
 
@@ -30,5 +30,11 @@ def run(self):
 
     # testing scripts
     if sys.argv[1] == '-t':
+        self.init_script()
+        self.data.extract_daypart_activity(self)
         self.data.extract_sales_activity(self)
+        self.routes.log_sales_data(self)
+        print(vars(self.data))
+        # self.driver.close()
+
         

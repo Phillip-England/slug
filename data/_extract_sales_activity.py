@@ -30,7 +30,7 @@ def extract_sales_activity(engine):
 
     # curbside indicators
     # we currently have curbside off, so this will default to 0
-    curbside_sales = 0
+    curbside_sales = str
 
     # delivery indicators
     delivery_indicator = 'DELIVERY'
@@ -117,8 +117,22 @@ def extract_sales_activity(engine):
         if data[i] == pickup_indicators and pickup_sales == str:
             pickup_sales = data[i-pickup_steps]
 
+    # final check to see if certain categories were exclued
+    if carryout_sales == str: carryout_sales = str(0)
+    if cfa_delivery_sales == str: cfa_delivery_sales = str(0)
+    if curbside_sales == str: curbside_sales = str(0)
+    if delivery_sales == str: delivery_sales = str(0)
+    if dine_in_sales == str: dine_in_sales = str(0)
+    if drive_thru_sales == str: drive_thru_sales = str(0)
+    if m_carryout_sales == str: m_carryout_sales = str(0)
+    if m_dine_in_sales == str: m_dine_in_sales = str(0)
+    if m_drive_thru_sales == str: m_drive_thru_sales = str(0)
+    if on_demand_sales == str: on_demand_sales = str(0)
+    if pickup_sales == str: pickup_sales = str(0)
+
     engine.data.carryout_sales = carryout_sales
     engine.data.cfa_delivery_sales = cfa_delivery_sales
+    engine.data.curbside_sales = curbside_sales
     engine.data.delivery_sales = delivery_sales
     engine.data.dine_in_sales = dine_in_sales
     engine.data.drive_thru_sales = drive_thru_sales

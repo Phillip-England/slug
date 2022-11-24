@@ -39,9 +39,10 @@ class config:
         self.sales_activity_submit_id = 'MainContent_cfaCommonReportInputInterface1_btnGenerateButton'
         self.sales_activity_default_download_path = os.path.join(os.environ.get('HOME'), 'Downloads', 'Sales Activity Report.pdf')
 
-
         # sales tracking google form settings
-        self.sales_tracking_form_url = 'https://forms.gle/GuYmkRqdfRpgKSYB6'
+        self.sales_tracking_form_url = 'https://forms.gle/kmYMEACkswUzCp3M6'
+        self.sales_form_input_class_name = 'whsOnd'
+        self.sales_form_submit_class_name = 'NPEfkd'
         self.sales_form_purple_header_cords = (441, 139)
         self.sales_form_purple_color = (103, 58, 183)
         self.first_sales_input_cords = (429, 365)
@@ -63,5 +64,4 @@ class config:
         self.cem_portrait_pdf_id = 'rvsPDFLBL'
         self.cem_download_button_id = 'rvsDownloadBTN'
         self.cem_report_download_path = os.path.join(os.environ.get('HOME'), 'Downloads', 'FullScale_Report.PDF')
-
 
