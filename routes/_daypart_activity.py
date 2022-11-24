@@ -35,6 +35,8 @@ def daypart_activity(engine, date):
             pyautogui.typewrite(date, engine.config.pyautogui_type_speed)
             time.sleep(1)
             pyautogui.press('enter')
+            print(f'Date information entered at {engine.config.daypart_activity_url}')
+            break
 
             # checking if the date was entered correctly, if it was, break out of loop
             start_date_input.click()
