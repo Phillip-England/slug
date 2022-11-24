@@ -41,20 +41,26 @@ def sales_activity(engine, date):
         input_counter = 0
         while True:
 
+            # downloading and giving a second for pdf to download
             submit_button.click()
             time.sleep(5)
-
+        
             # checking if pdf was properly downloaded
             if os.path.exists(engine.config.sales_activity_default_download_path) == True:
                 print(f'{engine.config.sales_activity_default_download_path} downloaded at {engine.config.sales_activity_url}')
                 break
-
+            # if the pdf was not downloaded, we need to determine if we picked a bad day
             else:
+                # checking if we got a pop up box, if we did, we picked a bad day
+                bad_day_popup = engine.driver.find_element(By.ID, engine.config.sales_activity_bad_day_id)
+                if bad_day_popup.is_displayed():
+                    raise Exception(f'Selected a bad day at {engine.config.sales_activity_url}')
+
+                # if we did not get a popup box, then we selected a good day, but our pdf took too long to download. We need to reloop through the process.
                 input_counter = input_counter + 1
                 # if we max out our loop, pdf failed to download
                 if input_counter == engine.config.max_loop:
                     raise Exception(f'Failed to download pdf at {engine.config.sales_activity_url}')
-                # handling bad day selection
     
     # logging errors
     except Exception as error:

@@ -8,9 +8,7 @@ def init_script(self):
     # clear all files here
     self.directories.dump(self.directories.screenshots)
     self.directories.dump(self.directories.master_logs)
-    self.directories.dump(self.directories.downloads)
-    # os.system("rm /home/phillip/Downloads/'Daypart Activity Report.pdf'")
-    # os.system("rm /home/phillip/Downloads/FullScale_Report.PDF")
+    # self.directories.dump(self.directories.downloads)
 
     # setting up the master log
     master_log = self.logger.init_log(self.directories.master_logs, 'log', '.txt')

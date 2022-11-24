@@ -16,20 +16,17 @@ def run(self):
             self.routes.login_cfa_home(self)
             self.routes.login_service_point(self)
             # self.routes.daypart_activity(self, date)
-            # self.routes.extract_daypart_activity(self)
+            # self.data.extract_daypart_activity(self)
             self.routes.sales_activity(self, date)
             # self.routes.log_sales_data(self)
-            # self.driver.close()
+            self.driver.close()
 
     # current month CEMS
     if sys.argv[1] == '-c':
         self.routes.cem_report_builder(self)
-        self.routes.extract_cem_scores(self)
+        self.data.extract_cem_scores(self)
 
     # testing scripts
     if sys.argv[1] == '-t':
-        # self.routes.login_service_point(self)
-        # self.routes.daypart_activity(self)
-        self.routes.extract_daypart_activity(self)
-        print(self.data.sales_data)
+        self.data.extract_sales_activity(self)
         

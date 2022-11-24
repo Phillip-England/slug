@@ -34,6 +34,7 @@ class config:
         # sales activity report settings
         self.sales_activity_url = 'https://rsmw.cfahome.com/SMW18-00/CFASalesActivityReport.aspx'
         self.sales_activity_date_input_id = 'MainContent_cfaCommonReportInputInterface1_startBusinessDateWithTime_I'
+        self.sales_activity_bad_day_id = 'InformationalPopup_HCB-1'
         self.sales_activity_submit_id = 'MainContent_cfaCommonReportInputInterface1_btnGenerateButton'
         self.sales_activity_default_download_path = os.path.join(os.environ.get('HOME'), 'Downloads', 'Sales Activity Report.pdf')
 

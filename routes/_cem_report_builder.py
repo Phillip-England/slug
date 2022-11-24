@@ -2,7 +2,7 @@ import pyautogui
 import time
 from selenium.webdriver.common.by import By
 
-def cem_report_builder(self, engine):
+def cem_report_builder(engine):
 
     # going to CEM website
     engine.driver.get(engine.config.cem_url)
