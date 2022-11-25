@@ -30,6 +30,13 @@ class data:
         # m_drive_thru_sales
         # on_demand_sales
         # pickup_sales
+        # number of surveys
+        # osat
+        # taste
+        # speed
+        # ace
+        # cleanliness
+        # accuracy
 
 
     def set_current_month_cem_data(self, data_dictionary):

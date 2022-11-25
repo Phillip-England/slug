@@ -25,8 +25,18 @@ def run(self):
 
     # current month CEMS
     if sys.argv[1] == '-c':
-        self.routes.cem_report_builder(self)
-        self.data.extract_cem_scores(self)
+
+        if len(sys.argv) != 3:
+            print('Usage Example: python3 main.py -c 11/21/2022')
+
+        if len(sys.argv) == 3:
+            date = sys.argv[2]
+            self.init_script()
+            self.routes.login_cfa_home(self)
+            self.routes.cem_report_builder(self, date)
+            self.data.extract_cem_scores(self)
+            self.driver.close()
+            print(vars(self.data))
 
     # testing scripts
     if sys.argv[1] == '-t':

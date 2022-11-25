@@ -16,4 +16,4 @@ class routes:
     def daypart_activity(self, engine, date): daypart_activity(engine, date)
     def sales_activity(self, engine, date): sales_activity(engine, date)
     def log_sales_data(self, engine): log_sales_data(engine)
-    def cem_report_builder(self, engine): cem_report_builder(engine)
+    def cem_report_builder(self, engine, date): cem_report_builder(engine, date)

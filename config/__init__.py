@@ -5,10 +5,11 @@ class config:
     def __init__(self):
 
         #global settings
-        self.max_wait_time = 20
-        self.pyautogui_type_speed = 0.1
+        self.max_wait_time = 20 # how long will we wait for a page to load
+        self.pyautogui_type_speed = 0.05
         # determines how many times we will run an operation before exiting
         self.max_loop = 5
+        self.refresh_wait_time = 20 # how long to wait before refreshing
 
         #cfa login settings
         self.cfa_home_url = 'https://www.cfahome.com'
@@ -48,20 +49,32 @@ class config:
         self.first_sales_input_cords = (429, 365)
 
         #cem page settings
-        self.cem_url = 'https://www.cfahome.com/go/appurl.go?app=SMGCLM'
+        self.cem_url_true = 'https://www.cfahome.com/go/appurl.go?app=SMGCLM'
+        self.cem_url_redirect = 'https://reporting.smg.com/dashboard.aspx?ID=4'
+        self.cem_loaded_id = 'clientLogo'
         self.cem_report_builder_url = 'https://reporting.smg.com/ReportBuilder.aspx'
+        self.report_builder_button_id = 'rbBuildReportBTN'
+        self.report_type_dropdown_id = 'rbReportTypeSEL'
+        self.report_builder_start_date_id = 'rbStartDateTB'
+        self.report_builder_end_date_id = 'rbEndDateTB'
+        self.report_builder_cem_selection_cords = (933, 382)
+        self.report_builder_build_button_id = 'rbBuildReportBTN'
+        self.report_builder_scores_loaded_id = 'rvTitleSpan1'
+        self.cem_download_menu_button = 'rvSaveReportBTN'
+        self.cem_download_menu_id = 'rvsTitleDiv'
+        self.cem_portrait_pdf_id = 'rvsPDFLBL'
+        self.cem_download_button_id = 'rvsDownloadBTN'
+
+
+
         self.cem_report_type_dropdown_cords = (325, 371)
         self.cem_blue_banner_cords = (120, 256)
         self.cem_blue_banner_color = (9, 118, 214)
         self.cem_date_range_dropdown_cords = (294, 511)
         self.cem_options = (986, 410)
-        self.report_builder_button_id = 'rbBuildReportBTN'
         self.cem_score_selection_id = 'rbSurveyItemSEL1_chosen'
         self.cem_date_range_id = 'rbDateRangeSEL'
-        self.cem_download_menu_button = 'rvSaveReportBTN'
         self.download_cem_data_button = (1123, 303)
         self.cem_pdf_option = (347, 599)
-        self.cem_portrait_pdf_id = 'rvsPDFLBL'
-        self.cem_download_button_id = 'rvsDownloadBTN'
         self.cem_report_download_path = os.path.join(os.environ.get('HOME'), 'Downloads', 'FullScale_Report.PDF')
 
