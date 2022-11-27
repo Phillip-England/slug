@@ -75,6 +75,7 @@ def cem_report_builder(engine, date):
 
         cem_download_pdf_button = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.cem_download_button_id)))
         cem_download_pdf_button.click()
+        time.sleep(3)
 
 
 

@@ -8,7 +8,7 @@ def init_script(self):
     # clear all files here
     self.directories.dump(self.directories.screenshots)
     self.directories.dump(self.directories.master_logs)
-    self.directories.dump(self.directories.downloads)
+    # self.directories.dump(self.directories.downloads)
 
     # setting up the master log
     master_log = self.logger.init_log(self.directories.master_logs, 'log', '.txt')

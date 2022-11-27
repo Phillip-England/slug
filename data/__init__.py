@@ -1,6 +1,7 @@
 from ._extract_daypart_activity import extract_daypart_activity
 from ._extract_cem_scores import extract_cem_scores
 from ._extract_sales_activity import extract_sales_activity
+from ._extract_cem_spreadsheet_data import extract_cem_spreadsheet_data
 
 class data:
     def __init__(self):
@@ -30,7 +31,7 @@ class data:
         # m_drive_thru_sales
         # on_demand_sales
         # pickup_sales
-        # number of surveys
+        # number_of_surveys
         # osat
         # taste
         # speed
@@ -39,9 +40,7 @@ class data:
         # accuracy
 
 
-    def set_current_month_cem_data(self, data_dictionary):
-        self.current_month_cem_data = data_dictionary
-
     def extract_daypart_activity(self, engine): extract_daypart_activity(engine)
     def extract_cem_scores(self, engine): extract_cem_scores(engine)
     def extract_sales_activity(self, engine): extract_sales_activity(engine)
+    def extract_cem_spreadsheet_data(self, engine): extract_cem_spreadsheet_data(engine)

@@ -35,16 +35,16 @@ def run(self):
             self.routes.login_cfa_home(self)
             self.routes.cem_report_builder(self, date)
             self.data.extract_cem_scores(self)
+            self.routes.log_cem_data(self)
             self.driver.close()
             print(vars(self.data))
 
     # testing scripts
     if sys.argv[1] == '-t':
         self.init_script()
-        self.data.extract_daypart_activity(self)
-        self.data.extract_sales_activity(self)
-        self.routes.log_sales_data(self)
-        print(vars(self.data))
         # self.driver.close()
+        # self.routes.cem_spreadsheet(self)
+        self.driver.close()
+        self.data.extract_cem_spreadsheet_data(self)
 
         
