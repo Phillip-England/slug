@@ -10,6 +10,7 @@ import directories
 import logger
 import routes
 import data
+import date
 
 # class methods
 from ._get_driver import get_driver
@@ -26,6 +27,7 @@ class engine:
         self.logger = logger.logger()
         self.routes = routes.routes()
         self.data = data.data()
+        self.date = date.date()
     
     def get_driver(self): get_driver(self)
     def wait_for_color(self, color, coordinates, filename): wait_for_color(self, color, coordinates, filename)
