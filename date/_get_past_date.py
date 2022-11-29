@@ -1,6 +1,6 @@
 import datetime
 
-def get_past_date(self, days_in_past):
+def get_past_date(days_in_past):
 
 
     # getting current date
@@ -30,6 +30,7 @@ def get_past_date(self, days_in_past):
             month = month + char
         if dash_count == 2:
             day = day + char
-    
+
     return (month, day, year)
+    
     

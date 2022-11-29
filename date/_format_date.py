@@ -1,11 +1,9 @@
-import datetime
+def format_date(date_tuple, date_format):
 
-def format_date(self, date_tuple, date_format):
-
-    month = date_tuple(0)
-    day = date_tuple(1)
-    year = date_tuple(2)
-
+    # the month and day value will always be two digets, example 10 or 08
+    month = date_tuple[0]
+    day = date_tuple[1]
+    year = date_tuple[2]
 
     if date_format == 'x/x/xxxx':
         # removing additional 0s in front of day and month if needed     
