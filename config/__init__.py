@@ -75,8 +75,6 @@ class config:
         # cem spreadsheet
         self.cem_spreadsheet_url = os.environ.get("CEM_SPREADSHEET_URL")
         self.cem_spreadsheet_loading_element_class_name = 'gb_2'
-        self.cem_spreadsheet_download_button_cords = (1302, 148)
-        self.cem_spreadsheet_download_loading_element_class_name = 'waffle-printing-header-title'
-        self.cem_spreadsheet_download_path = os.path.join(os.environ.get('HOME'), 'Downloads', "Data Scraping - CEM Data.pdf")
+        self.cem_spreadsheet_download_path = os.path.join(os.environ.get('HOME'), 'Downloads', "Data Scraping - CEM Data.csv")
 
 
