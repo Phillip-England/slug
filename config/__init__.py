@@ -65,6 +65,13 @@ class config:
         self.cem_portrait_pdf_id = 'rvsPDFLBL'
         self.cem_download_button_id = 'rvsDownloadBTN'
         self.cem_report_download_path = os.path.join(os.environ.get('HOME'), 'Downloads', 'FullScale_Report.PDF')
+        self.cem_refine_results_class_name = 'reversePodButton'
+        self.cem_filter_data_id = 'rbFilterTitleLBL1'
+        self.cem_filter_time_of_day_id = '18453_label'
+        self.cem_filter_type_of_visit_id = '18463_label'
+        self.cem_filter_mobile_type_visit_id = '545526_label'
+        self.cem_filter_done_button_id = 'rbDoneBTN'
+
 
         # cem google form
         self.cem_tracking_form_url = os.environ.get("CEM_GOOGLE_FORM_URL")

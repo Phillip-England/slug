@@ -50,9 +50,30 @@ def cem_report_builder(engine, date):
             pyautogui.press('enter')
         print(f'Cem scores selected at {engine.driver.current_url}')
 
+        # refining the results
+        refine_results = engine.driver.find_element(By.CLASS_NAME, engine.config.cem_refine_results_class_name)
+        refine_results.click()
+        filter_data = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.cem_filter_data_id)))
+        filter_data.click()
+
+        # selecting refine categories
+        time_of_day = engine.driver.find_element(By.ID, engine.config.cem_filter_time_of_day_id)
+        type_of_visit = engine.driver.find_element(By.ID, engine.config.cem_filter_type_of_visit_id)
+        mobile_type_of_visit = engine.driver.find_element(By.ID, engine.config.cem_filter_mobile_type_visit_id)
+        time_of_day.click()
+        type_of_visit.click()
+        mobile_type_of_visit.click()
+        done_button = engine.driver.find_element(By.ID, engine.config.cem_filter_done_button_id)
+        done_button.click()
+
+
+
         # building the report
         build_button = engine.driver.find_element(By.ID, engine.config.report_builder_build_button_id)
         build_button.click()
+
+        time.sleep(20)
+
 
         # waiting for report to be built
         full_scale_report_title = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.report_builder_scores_loaded_id)))
