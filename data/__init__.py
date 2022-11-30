@@ -38,6 +38,22 @@ class data:
         # ace
         # cleanliness
         # accuracy
+        # ninty_day_survey_list
+        # ninty_day_day_of_week_list
+        # ninty_day_osat_list
+        # ninty_day_taste_list
+        # ninty_day_speed_list
+        # ninty_day_ace_list
+        # ninty_day_cleanliness_list
+        # ninty_day_accuracy_list
+        # current_month_survey_list
+        # current_month_day_of_week
+        # current_month_osat_list
+        # current_month_taste_list
+        # current_month_speed_list
+        # current_month_ace_list
+        # current_month_cleanliness_list
+        # current_month_accuracy_list
 
 
     def extract_daypart_activity(self, engine): extract_daypart_activity(engine)

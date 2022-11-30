@@ -42,8 +42,9 @@ def run(self):
     # testing scripts
     if sys.argv[1] == '-t':
         self.init_script()
-        # self.routes.cem_spreadsheet(self)
+        self.routes.cem_spreadsheet(self)
         self.driver.close()
         self.data.extract_cem_spreadsheet_data(self)
+        print(vars(self.data))
 
         
