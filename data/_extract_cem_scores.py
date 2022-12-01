@@ -1,23 +1,41 @@
 import PyPDF2
 import datetime
 
-def extract_cem_scores(engine, keyword):
+def extract_cem_scores(engine):
 
     try:
 
         # pulling data from CEM score PDF
-        report = open(engine.config.cem_report_download_path, 'rb')
-        reader = PyPDF2.PdfFileReader(report)
+        cm_report = open(engine.config.cem_report_download_path_current_month, 'rb')
+        cm_reader = PyPDF2.PdfFileReader(cm_report)
+
+        ndr_report = open(engine.config.cem_report_download_path_ninty_day_rolling, 'rb')
+        ndr_reader = PyPDF2.PdfFileReader(ndr_report)
+
+        ytd_report = open(engine.config.cem_report_download_path_year_to_date, 'rb')
+        ytd_reader = PyPDF2.PdfFileReader(ytd_report)
 
         # extracting the data and splitting by word
-        content = ''
-        for page in range(reader.numPages):
-            content = content + reader.getPage(page).extract_text()
-        data = content.split()
+        cm_content = ''
+        ndr_content = ''
+        ytd_content = ''
 
-        # exciting if we got a bad pdf
-        if len(data) < 70:
-            raise Exception(f'Selected a bad day for CEM score collection')
+        for page in range(cm_reader.numPages):
+            cm_content = cm_content + cm_reader.getPage(page).extract_text()
+
+        for page in range(ndr_reader.numPages):
+            ndr_content = ndr_content + ndr_reader.getPage(page).extract_text()
+
+        for page in range(ytd_reader.numPages):
+            ytd_content = ytd_content + ytd_reader.getPage(page).extract_text()
+
+
+        cm_data = cm_content.split()
+        ndr_data = ndr_content.split()
+        ytd_data = ytd_content.split()
+
+        # setting up loop keywords
+        report_types = ['cm', 'ndr', 'ytd']
 
         #important variables for extrating data
         osat_indicator = 'Satisfaction' # only appears once
@@ -32,8 +50,6 @@ def extract_cem_scores(engine, keyword):
         cleanliness_steps = 10
         accuracy_indicator = 'Accuracy' # only appears once
         accuracy_steps = 9
-        date_indicator = ':' # only appears once
-        date_steps = 1
 
         # variables to store data from pdf
         number_of_surveys = str
@@ -44,66 +60,133 @@ def extract_cem_scores(engine, keyword):
         accuracy = str
         ace = str
 
+        for report_type in report_types:
 
-        # looping through the words of the pdf to scrape data
-        for i in range(len(data)):
+            if report_type == 'cm':
+                data = cm_data
 
-            print(data[i])
+            if report_type == 'ndr':
+                data = ndr_data
 
-            # getting date and day of week
-            if data[i] == date_indicator:
-                engine.data.date = data[i+date_steps]
-                month = ''
-                day = ''
-                year = ''
-                slashes_found = 0
-                for char in engine.data.date:
-                    if char != '/':
-                        if slashes_found == 0:
-                            month = month + char
-                        if slashes_found == 1:
-                            day = day + char
-                        if slashes_found == 2:
-                            year = year + char
-                    else:
-                        slashes_found = slashes_found + 1
-                week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-                engine.data.day_of_week = week[datetime.datetime(int(year), int(month), int(day)).weekday()]
-
-            # scraping OSAT data
-            if data[i] == osat_indicator:
-                # the score is found 10 steps after the indicator
-                engine.data.osat = data[i+osat_steps]
-            
-            # scraping taste data
-            # we can also scrape the amount of total surveys here as the number comes directly before the taste indicator
-            if data[i] == taste_indicator:
-                # score is found 10 words after the indicator
-                engine.data.taste = data[i+taste_steps]
-                #number of surveys is found directly before the indicator
-                engine.data.number_of_surveys = data[i - 1]
+            if report_type == 'ytd':
+                data = ytd_data
 
 
-            # scraping fast service data
-            if data[i] == fast_service_indicator:
-                #score is found 10 words after the indicator
-                engine.data.speed = data[i+fast_service_steps]
+            # looping through the words of the pdf to scrape data
+            for i in range(len(data)):
 
-            # scraping ace data
-            if data[i] == ace_indicator:
-                # score is found 10 words after the indicator
-                engine.data.ace = data[i+ace_steps]
+                # scraping OSAT data
+                if data[i] == osat_indicator:
+                    # the score is found 10 steps after the indicator
 
-            # scraping cleanliness data
-            if data[i] == cleanliness_indicator:
-                # score is found 10 words after the indicator
-                engine.data.cleanliness = data[i+cleanliness_steps]
+                    if report_type == 'cm':
+                        engine.data.cm_osat = data[i+osat_steps]
 
-            # scraping accuracy data
-            if data[i] == accuracy_indicator:
-                # score is found 10 words after the indicator
-                engine.data.accuracy = data[i+accuracy_steps]
+                    if report_type == 'ndr':
+                        engine.data.ndr_osat = data[i+osat_steps]
 
+                    if report_type == 'ytd':
+                        engine.data.ytd_osat = data[i+osat_steps]
+                
+                # scraping taste data
+                # we can also scrape the amount of total surveys here as the number comes directly before the taste indicator
+                if data[i] == taste_indicator:
+
+                    if report_type == 'cm':
+                        engine.data.cm_taste = data[i+taste_steps]
+                        engine.data.cm_number_of_surveys = data[i - 1]
+
+                    if report_type == 'ndr':
+                        engine.data.ndr_taste = data[i+taste_steps]
+                        engine.data.ndr_number_of_surveys = data[i - 1]
+
+                    if report_type == 'ytd':
+                        engine.data.ytd_taste = data[i+taste_steps]
+                        engine.data.ytd_number_of_surveys = data[i - 1]
+
+
+
+                # scraping fast service data
+                if data[i] == fast_service_indicator:
+
+                    if report_type == 'cm':
+                        engine.data.cm_speed = data[i+fast_service_steps]
+
+                    if report_type == 'ndr':
+                        engine.data.ndr_speed = data[i+fast_service_steps]
+
+                    if report_type == 'ytd':
+                        engine.data.ytd_speed = data[i+fast_service_steps]
+
+
+                # scraping ace data
+                if data[i] == ace_indicator:
+
+                    if report_type == 'cm':
+                        engine.data.cm_ace = data[i+ace_steps]
+
+                    if report_type == 'ndr':
+                        engine.data.ndr_ace = data[i+ace_steps]
+
+                    if report_type == 'ytd':
+                        engine.data.ytd_ace = data[i+ace_steps]
+
+
+                # scraping cleanliness data
+                if data[i] == cleanliness_indicator:
+
+                    if report_type == 'cm':
+                        engine.data.cm_cleanliness = data[i+cleanliness_steps]
+
+                    if report_type == 'ndr':
+                        engine.data.ndr_cleanliness = data[i+cleanliness_steps]
+
+                    if report_type == 'ytd':
+                        engine.data.ytd_cleanliness = data[i+cleanliness_steps]
+
+
+                # scraping accuracy data
+                if data[i] == accuracy_indicator:
+
+                    if report_type == 'cm':
+                        engine.data.cm_accuracy = data[i+accuracy_steps]
+
+                    if report_type == 'ndr':
+                        engine.data.ndr_accuracy = data[i+accuracy_steps]
+
+                    if report_type == 'ytd':
+                        engine.data.ytd_accuracy = data[i+accuracy_steps]
+
+
+        # checking all our datapoints and filling in n/a if it was not found
+
+        datapoints = [
+            'cm_osat',
+            'ndr_osat',
+            'ytd_osat',
+            'cm_taste',
+            'ndr_taste',
+            'ytd_taste',
+            'cm_speed',
+            'ndr_speed',
+            'ytd_speed',
+            'cm_ace',
+            'ndr_ace',
+            'ytd_ace',
+            'cm_cleanliness',
+            'ndr_cleanliness',
+            'ytd_cleanliness',
+            'cm_accuracy',
+            'ndr_accuracy',
+            'ytd_accuracy',
+            'cm_number_of_surveys',
+            'ndr_number_of_surveys',
+            'ytd_number_of_surveys',
+        ]
+
+        for datapoint in datapoints:
+            if hasattr(engine.data, datapoint) == False:
+                setattr(engine.data, datapoint, 'N/A')
 
     except Exception as error:
         engine.driver.close()

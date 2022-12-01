@@ -65,7 +65,10 @@ class config:
         self.cem_download_menu_id = 'rvsTitleDiv'
         self.cem_portrait_pdf_id = 'rvsPDFLBL'
         self.cem_download_button_id = 'rvsDownloadBTN'
-        self.cem_report_download_path = os.path.join(os.environ.get('HOME'), 'Downloads', 'FullScale_Report.PDF')
+        self.cem_report_download_path_current_month = os.path.join(os.environ.get('HOME'), 'Downloads', 'FullScale_Report.PDF')
+        self.cem_report_download_path_ninty_day_rolling = os.path.join(os.environ.get('HOME'), 'Downloads', 'FullScale_Report (1).PDF')
+        self.cem_report_download_path_year_to_date = os.path.join(os.environ.get('HOME'), 'Downloads', 'FullScale_Report (2).PDF')
+
 
 
         # cem google form
