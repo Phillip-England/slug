@@ -5,4 +5,5 @@ load_dotenv()
 engine = engine.engine()
 
 if __name__ == '__main__':
+    print("Initalizing Slug...")
     engine.run()

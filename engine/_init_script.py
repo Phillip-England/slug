@@ -2,9 +2,6 @@ import os
 
 def init_script(self):
 
-    # intro message
-    print("Initalizing Slug...")
-
     # clear all files here
     self.directories.dump(self.directories.screenshots)
     self.directories.dump(self.directories.master_logs)

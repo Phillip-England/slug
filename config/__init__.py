@@ -55,6 +55,7 @@ class config:
         self.cem_report_builder_url = os.environ.get("REPORT_BUILDER_URL")
         self.report_builder_button_id = 'rbBuildReportBTN'
         self.report_type_dropdown_id = 'rbReportTypeSEL'
+        self.report_date_range_dropdown_id = 'rbDateRangeSEL'
         self.report_builder_start_date_id = 'rbStartDateTB'
         self.report_builder_end_date_id = 'rbEndDateTB'
         self.report_builder_cem_selection_cords = (933, 382)
@@ -65,12 +66,6 @@ class config:
         self.cem_portrait_pdf_id = 'rvsPDFLBL'
         self.cem_download_button_id = 'rvsDownloadBTN'
         self.cem_report_download_path = os.path.join(os.environ.get('HOME'), 'Downloads', 'FullScale_Report.PDF')
-        self.cem_refine_results_class_name = 'reversePodButton'
-        self.cem_filter_data_id = 'rbFilterTitleLBL1'
-        self.cem_filter_time_of_day_id = '18453_label'
-        self.cem_filter_type_of_visit_id = '18463_label'
-        self.cem_filter_mobile_type_visit_id = '545526_label'
-        self.cem_filter_done_button_id = 'rbDoneBTN'
 
 
         # cem google form

@@ -1,7 +1,7 @@
 import PyPDF2
 import datetime
 
-def extract_cem_scores(engine):
+def extract_cem_scores(engine, keyword):
 
     try:
 
@@ -47,6 +47,8 @@ def extract_cem_scores(engine):
 
         # looping through the words of the pdf to scrape data
         for i in range(len(data)):
+
+            print(data[i])
 
             # getting date and day of week
             if data[i] == date_indicator:

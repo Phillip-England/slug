@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
-def cem_report_builder(engine, date):
+def cem_report_builder(engine, keyword):
 
     try:
 
@@ -35,11 +35,59 @@ def cem_report_builder(engine, date):
         # confirming full scale report was selected
         start_date_input = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.report_builder_start_date_id)))
         end_date_input = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.report_builder_end_date_id)))
+        report_type_dropdown = engine.driver.find_element(By.ID, engine.config.report_date_range_dropdown_id)
 
-        # sending the date in
-        start_date_input.send_keys(date)
-        end_date_input.send_keys(date)
-        print(f'Date information entered at {engine.config.cem_report_builder_url}')
+
+
+        # checking which type of report to pull
+
+        # specific day
+        if keyword != '-cm' and keyword != '-ndr' and keyword != '-ytd':
+            start_date_input.send_keys(keyword)
+            end_date_input.send_keys(keyword)
+            print(f'Date information entered at {engine.config.cem_report_builder_url}')
+
+        # current month
+        if keyword == '-cm':
+            report_type_dropdown.click()
+            pyautogui.press('down')
+            time.sleep(0.2)
+            pyautogui.press('down')
+            time.sleep(0.2)
+            pyautogui.press('down')
+            time.sleep(0.2)
+            pyautogui.press('down')
+            time.sleep(0.2)
+            pyautogui.press('enter')
+            time.sleep(0.2)
+            print(f"Current month selected at {engine.driver.current_url}")
+
+        # ninty day rolling
+        if keyword == '-ndr':
+            report_type_dropdown.click()
+            pyautogui.press('down')
+            time.sleep(0.2)
+            pyautogui.press('enter')
+            print(f"Ninty day rolling selected at {engine.driver.current_url}")
+
+        # yeat to date
+        if keyword == '-ytd':
+            report_type_dropdown.click()
+            pyautogui.press('down')
+            time.sleep(0.2)
+            pyautogui.press('down')
+            time.sleep(0.2)
+            pyautogui.press('down')
+            time.sleep(0.2)
+            pyautogui.press('down')
+            time.sleep(0.2)
+            pyautogui.press('down')
+            time.sleep(0.2)
+            pyautogui.press('down')
+            time.sleep(0.2)
+            pyautogui.press('enter')
+            time.sleep(0.2)
+            print(f"Year to date selected at {engine.driver.current_url}")
 
         # submitting data to pull
         cem_types = ['overall sat', 'taste', 'fast service', 'attentive', 'cleanliness com', 'order acc']
@@ -50,30 +98,9 @@ def cem_report_builder(engine, date):
             pyautogui.press('enter')
         print(f'Cem scores selected at {engine.driver.current_url}')
 
-        # refining the results
-        refine_results = engine.driver.find_element(By.CLASS_NAME, engine.config.cem_refine_results_class_name)
-        refine_results.click()
-        filter_data = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.cem_filter_data_id)))
-        filter_data.click()
-
-        # selecting refine categories
-        time_of_day = engine.driver.find_element(By.ID, engine.config.cem_filter_time_of_day_id)
-        type_of_visit = engine.driver.find_element(By.ID, engine.config.cem_filter_type_of_visit_id)
-        mobile_type_of_visit = engine.driver.find_element(By.ID, engine.config.cem_filter_mobile_type_visit_id)
-        time_of_day.click()
-        type_of_visit.click()
-        mobile_type_of_visit.click()
-        done_button = engine.driver.find_element(By.ID, engine.config.cem_filter_done_button_id)
-        done_button.click()
-
-
-
         # building the report
         build_button = engine.driver.find_element(By.ID, engine.config.report_builder_build_button_id)
         build_button.click()
-
-        time.sleep(20)
-
 
         # waiting for report to be built
         full_scale_report_title = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.report_builder_scores_loaded_id)))
@@ -98,27 +125,12 @@ def cem_report_builder(engine, date):
         cem_download_pdf_button.click()
         time.sleep(3)
 
-
-
-
-
-
-
-
-
     except Exception as error:
         engine.driver.close()
         raise SystemExit(error)
-
-
-
-
-
     
     engine.driver.get(engine.config.cem_report_builder_url)
     # print("Report Builder Loaded")
-
-
 
     # # selecting the correct report type
     # engine.wait_for_color(engine.config.cem_blue_banner_color, engine.config.cem_blue_banner_cords, 'cem_banner.png')   

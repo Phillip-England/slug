@@ -57,6 +57,6 @@ class data:
 
 
     def extract_daypart_activity(self, engine): extract_daypart_activity(engine)
-    def extract_cem_scores(self, engine): extract_cem_scores(engine)
+    def extract_cem_scores(self, engine, keyword): extract_cem_scores(engine, keyword)
     def extract_sales_activity(self, engine): extract_sales_activity(engine)
     def extract_cem_spreadsheet_data(self, engine): extract_cem_spreadsheet_data(engine)
