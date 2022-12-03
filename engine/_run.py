@@ -30,18 +30,18 @@ def run(self):
         self.init_script()
         self.routes.login_cfa_home(self)
         self.routes.cem_report_builder(self)
-        # self.data.extract_cem_scores(self)
-        # self.routes.log_cem_data(self)
+        self.data.extract_cem_scores(self)
+        self.routes.slack_message(self, self.data.get_cem_message())
+        self.data.print_cems()
         self.driver.close()
-        # print(vars(self.data))
 
     # testing scripts
     if sys.argv[1] == '-t':
         self.init_script()
-        self.driver.close()
         self.data.extract_cem_scores(self)
-        # print(vars(self.data))
-        self.data.print_cems()
+        self.routes.slack_message(self, self.data.get_cem_message())
+
+
 
 
         

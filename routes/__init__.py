@@ -8,6 +8,7 @@ from ._log_sales_data import log_sales_data
 from ._cem_report_builder import cem_report_builder
 from ._log_cem_data import log_cem_data
 from ._cem_spreadsheet import cem_spreadsheet
+from ._slack_message import slack_message
 
 class routes:
     def __init__(self):
@@ -21,3 +22,4 @@ class routes:
     def cem_report_builder(self, engine): cem_report_builder(engine)
     def log_cem_data(self, engine): log_cem_data(engine)
     def cem_spreadsheet(self, engine): cem_spreadsheet(engine)
+    def slack_message(self, engine, message): slack_message(engine, message)

@@ -10,6 +10,8 @@ class config:
         # determines how many times we will run an operation before exiting
         self.max_loop = 5
         self.refresh_wait_time = 20 # how long to wait before refreshing
+        self.slack_scheduled_message_time = '8:00 AM'
+
 
         #cfa login settings
         self.cfa_home_url = os.environ.get("CFA_HOME_URL")
@@ -81,5 +83,15 @@ class config:
         self.cem_spreadsheet_url = os.environ.get("CEM_SPREADSHEET_URL")
         self.cem_spreadsheet_loading_element_class_name = 'gb_2'
         self.cem_spreadsheet_download_path = os.path.join(os.environ.get('HOME'), 'Downloads', "Data Scraping - CEM Data.csv")
+
+        # slack
+        self.slack_email_input_id = 'email'
+        self.slack_password_input_id = 'password'
+        self.slack_sign_in_button_id = 'signin_btn'
+        self.slack_loading_element_id = 'c-coachmark-anchor'
+        self.slack_message_element_class_name = 'ql-editor'
+        self.slack_schedule_button_class_name = 'c-button-unstyled'
+        self.slack_schedule_button_aria_label = 'Schedule for later'
+
 
 
