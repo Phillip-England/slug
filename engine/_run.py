@@ -38,8 +38,7 @@ def run(self):
     # testing scripts
     if sys.argv[1] == '-t':
         self.init_script()
-        self.data.extract_cem_scores(self)
-        self.routes.slack_message(self, self.data.get_cem_message())
+        self.routes.envysion(self)
 
 
 

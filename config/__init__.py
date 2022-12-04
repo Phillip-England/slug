@@ -93,5 +93,10 @@ class config:
         self.slack_schedule_button_class_name = 'c-button-unstyled'
         self.slack_schedule_button_aria_label = 'Schedule for later'
 
+        #envysion
+        self.envysion_email_input_id = 'login-username'
+        self.envysion_password_input_id = 'login-password'
+        self.envysion_loading_element_class_name = 'jss92'
+
 
 

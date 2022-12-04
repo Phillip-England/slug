@@ -9,6 +9,7 @@ from ._cem_report_builder import cem_report_builder
 from ._log_cem_data import log_cem_data
 from ._cem_spreadsheet import cem_spreadsheet
 from ._slack_message import slack_message
+from ._envysion import envysion
 
 class routes:
     def __init__(self):
@@ -23,3 +24,4 @@ class routes:
     def log_cem_data(self, engine): log_cem_data(engine)
     def cem_spreadsheet(self, engine): cem_spreadsheet(engine)
     def slack_message(self, engine, message): slack_message(engine, message)
+    def envysion(self, engine): envysion(engine)
