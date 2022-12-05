@@ -59,11 +59,11 @@ def cem_report_builder(engine):
                 pyautogui.press('enter')
 
             if report == 'ninty_day_rolling':
-                pyautogui.press('down', presses=1)
+                pyautogui.press('up', presses=3)
                 pyautogui.press('enter')
 
             if report == 'year_to_date':
-                pyautogui.press('down', presses=7)
+                pyautogui.press('down', presses=6)
                 pyautogui.press('enter')
 
 
