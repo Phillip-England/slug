@@ -60,6 +60,8 @@ class config:
         self.report_date_range_dropdown_id = 'rbDateRangeSEL'
         self.report_builder_start_date_id = 'rbStartDateTB'
         self.report_builder_end_date_id = 'rbEndDateTB'
+        self.report_builder_cem_selection_class_name = 'chosen-choices'
+        self.report_builder_cem_selection_value = 'Select Some Options'
         self.report_builder_cem_selection_cords = (933, 382)
         self.report_builder_build_button_id = 'rbBuildReportBTN'
         self.report_builder_scores_loaded_id = 'rvTitleSpan1'

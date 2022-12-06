@@ -9,10 +9,12 @@ import engine
 
 load_dotenv()
 
+# works on my raspberry pi
 if platform.platform() == 'Linux-5.15.76-v7l+-armv7l-with-glibc2.31':
     options = webdriver.ChromeOptions()
-    driver = webdriver.Remote(command_executor='https://172.17.0.2:4444', options = options)
+    driver = webdriver.Chrome()
 else:
+# works on my workstation computer
     options = Options()
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=options)

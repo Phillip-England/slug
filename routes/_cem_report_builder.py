@@ -37,12 +37,16 @@ def cem_report_builder(engine):
         end_date_input = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.report_builder_end_date_id)))
         report_type_dropdown = engine.driver.find_element(By.ID, engine.config.report_date_range_dropdown_id)
 
+        # filtering out the cem selection input box
+        elements_with_default_class_name = engine.driver.find_elements(By.CLASS_NAME, engine.config.report_builder_cem_selection_class_name)
+        cem_selection_input = elements_with_default_class_name[1]
+        cem_selection_input.click()
+
         # submitting data to pull
         cem_types = ['overall sat', 'taste', 'fast service', 'attentive', 'cleanliness com', 'order acc']
-        pyautogui.click(engine.config.report_builder_cem_selection_cords)
-        time.sleep(1)
         for cem in cem_types:
-            pyautogui.write(cem, interval=engine.config.pyautogui_type_speed)
+            pyautogui.typewrite(cem, interval=engine.config.pyautogui_type_speed)
+            time.sleep(0.2)
             pyautogui.press('enter')
         print(f'Cem scores selected at {engine.driver.current_url}')
 
