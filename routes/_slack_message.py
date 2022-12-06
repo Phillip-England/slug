@@ -8,7 +8,11 @@ import pyautogui
 def slack_message(engine, message):
 
     try:
-        engine.driver.get(os.environ.get("SLACK_LOGIN_PAGE"))
+
+        if engine.config.testing_slack == True:
+            engine.driver.get(os.environ.get('SLACK_TESTING_LOGIN_PAGE'))
+        else:
+            engine.driver.get(os.environ.get("SLACK_LOGIN_PAGE"))
 
         slack_email_input = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.slack_email_input_id)))
 
@@ -21,7 +25,10 @@ def slack_message(engine, message):
 
         slack_signin_button.click()
 
-        engine.driver.get(os.environ.get("SLACK_CFASOUTHROADS"))
+        if engine.config.testing_slack == True:
+            engine.driver.get(os.environ.get("SLACK_TESTING"))
+        else:
+            engine.driver.get(os.environ.get("SLACK_CFASOUTHROADS"))
 
         pyautogui.press('enter')
 
@@ -47,25 +54,44 @@ def slack_message(engine, message):
         schedule_button.click()
         time.sleep(2)
 
-        pyautogui.press('down', presses=2)
-        time.sleep(2)
+        c_menu_items = engine.driver.find_elements(By.CLASS_NAME, engine.config.slack_custom_time_button_class_name)
+        
+        for element in c_menu_items:
+            if element.text == 'Custom time':
+                custom_time_button = element
 
-        pyautogui.press('enter')
-        time.sleep(2)
+        custom_time_button.click()
 
-        pyautogui.press('tab', presses=3)
-        time.sleep(2)
+        time_slot = engine.driver.find_elements(By.CLASS_NAME, engine.config.slack_time_slot_class_name)
+
+        time_slot[0].click()
+
+        time.sleep(1)
+
+        pyautogui.press('backspace')
+
+        time.sleep(1)
 
         pyautogui.typewrite(engine.config.slack_scheduled_message_time, engine.config.pyautogui_type_speed)
         pyautogui.press('enter')
         time.sleep(2)
 
-        pyautogui.press('tab', presses=2)
-        time.sleep(2)
-        
-        pyautogui.press('enter')
+        buttons = engine.driver.find_elements(By.CLASS_NAME, engine.config.slack_schedule_message_button_class_name)
+
+        for button in buttons:
+            if button.get_attribute('data-qa') == 'schedule_message_dialog_submit_button':
+                submit_button = button
+
+        submit_button.click()
 
         time.sleep(10)
+
+        # pyautogui.press('tab', presses=2)
+        # time.sleep(2)
+        
+        # pyautogui.press('enter')
+
+        # time.sleep(10)
 
 
 

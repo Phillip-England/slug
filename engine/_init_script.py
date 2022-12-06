@@ -6,6 +6,5 @@ def init_script(self):
     self.driver.maximize_window()
 
     # clear all files here
-    self.directories.dump(self.directories.screenshots)
-    self.directories.dump(self.directories.master_logs)
-    self.directories.dump(self.directories.downloads)
+    if self.config.clear_downloads == True:
+        self.directories.dump(self.directories.downloads)

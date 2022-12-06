@@ -11,6 +11,8 @@ class config:
         self.max_loop = 5
         self.refresh_wait_time = 20 # how long to wait before refreshing
         self.slack_scheduled_message_time = '8:00 AM'
+        self.testing_slack = True
+        self.clear_downloads = False
 
 
         #cfa login settings
@@ -27,8 +29,6 @@ class config:
 
         #daypart activity report settings
         self.daypart_activity_url = os.environ.get("DAYPART_ACTIVITY_URL")
-        self.daypart_activity_wage_input_color = (255, 255, 255)
-        self.daypart_activity_wage_input_cords = (538, 419)
         self.daypart_activity_start_date_id = 'MainContent_BusDate1_B-1Img'
         self.daypart_activity_end_date_id = 'MainContent_BusDate2_B-1Img'
         self.daypart_activity_submit_id = 'MainContent_btnGenerateButton'
@@ -46,9 +46,6 @@ class config:
         self.sales_tracking_form_url = os.environ.get("SALES_GOOGLE_FORM")
         self.sales_form_input_class_name = 'whsOnd'
         self.sales_form_submit_class_name = 'NPEfkd'
-        self.sales_form_purple_header_cords = (441, 139)
-        self.sales_form_purple_color = (103, 58, 183)
-        self.first_sales_input_cords = (429, 365)
 
         #cem page settings
         self.cem_url_true = os.environ.get("CEM_TRUE_URL")
@@ -60,9 +57,7 @@ class config:
         self.report_date_range_dropdown_id = 'rbDateRangeSEL'
         self.report_builder_start_date_id = 'rbStartDateTB'
         self.report_builder_end_date_id = 'rbEndDateTB'
-        self.report_builder_cem_selection_class_name = 'chosen-choices'
-        self.report_builder_cem_selection_value = 'Select Some Options'
-        self.report_builder_cem_selection_cords = (933, 382)
+        self.report_builder_cem_selection_class_name = 'default'
         self.report_builder_build_button_id = 'rbBuildReportBTN'
         self.report_builder_scores_loaded_id = 'rvTitleSpan1'
         self.cem_download_menu_button = 'rvSaveReportBTN'
@@ -72,7 +67,6 @@ class config:
         self.cem_report_download_path_current_month = os.path.join(os.environ.get('HOME'), 'Downloads', 'FullScale_Report.PDF')
         self.cem_report_download_path_ninty_day_rolling = os.path.join(os.environ.get('HOME'), 'Downloads', 'FullScale_Report (1).PDF')
         self.cem_report_download_path_year_to_date = os.path.join(os.environ.get('HOME'), 'Downloads', 'FullScale_Report (2).PDF')
-
 
 
         # cem google form
@@ -94,6 +88,10 @@ class config:
         self.slack_message_element_class_name = 'ql-editor'
         self.slack_schedule_button_class_name = 'c-button-unstyled'
         self.slack_schedule_button_aria_label = 'Schedule for later'
+        self.slack_custom_time_button_class_name = 'c-menu_item__label'
+        self.slack_time_slot_class_name = 'c-select_input__content_text'
+        self.slack_schedule_message_button_class_name = 'c-button'
+
 
         #envysion
         self.envysion_email_input_id = 'login-username'

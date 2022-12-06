@@ -28,8 +28,8 @@ def run(self):
     if sys.argv[1] == '-cem':
         print('Selected CEM script')
         self.init_script()
-        self.routes.login_cfa_home(self)
-        self.routes.cem_report_builder(self)
+        # self.routes.login_cfa_home(self)
+        # self.routes.cem_report_builder(self)
         self.data.extract_cem_scores(self)
         self.routes.slack_message(self, self.data.get_cem_message())
         self.data.print_cems()
