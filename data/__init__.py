@@ -3,7 +3,7 @@ from ._extract_cem_scores import extract_cem_scores
 from ._extract_sales_activity import extract_sales_activity
 from ._extract_cem_spreadsheet_data import extract_cem_spreadsheet_data
 from ._print_cems import print_cems
-from ._get_cem_message import get_cem_message
+from ._get_slack_message import get_slack_message
 
 class data:
     def __init__(self):
@@ -22,6 +22,9 @@ class data:
         # dinner_sales
         # dinner_transactions
         # dinner_check_average
+        # total_sales
+        # total_transactions
+        # total_check_average
         # carryout_sales
         # cfa_delivery_sales
         # curbside sales
@@ -33,6 +36,8 @@ class data:
         # m_drive_thru_sales
         # on_demand_sales
         # pickup_sales
+        # found_yesterday_daypart_activity
+        # found_yesterday_sales_activity
         # number_of_surveys
         # osat
         # taste
@@ -63,5 +68,5 @@ class data:
     def extract_sales_activity(self, engine): extract_sales_activity(engine)
     def extract_cem_spreadsheet_data(self, engine): extract_cem_spreadsheet_data(engine)
     def print_cems(self): print_cems(self)
-    def get_cem_message(self): return get_cem_message(self)
+    def get_slack_message(self): return get_slack_message(self)
 

@@ -84,20 +84,7 @@ def slack_message(engine, message):
 
         submit_button.click()
 
-        time.sleep(10)
-
-        # pyautogui.press('tab', presses=2)
-        # time.sleep(2)
-        
-        # pyautogui.press('enter')
-
-        # time.sleep(10)
-
-
-
-        
-            
-
+        time.sleep(10)            
 
     except Exception as error:
         engine.driver.close()

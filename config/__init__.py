@@ -12,7 +12,7 @@ class config:
         self.refresh_wait_time = 20 # how long to wait before refreshing
         self.slack_scheduled_message_time = '8:00 AM'
         self.testing_slack = True
-        self.clear_downloads = False
+        self.clear_downloads = True
 
 
         #cfa login settings

@@ -61,17 +61,6 @@ def daypart_activity(engine, date):
         submit_button.click()
         time.sleep(5)
 
-        # checking if we entered a bad date
-        bad_day_popup = engine.driver.find_element(By.ID, engine.config.daypart_activity_bad_day_id)
-        if bad_day_popup.is_displayed():
-            raise Exception(f'Selected a bad day at {engine.config.daypart_activity_url}')
-
-        # checking if pdf was downloaded
-        if os.path.exists(engine.config.daypart_activity_default_download_path) == True:
-            print(f'Pdf {engine.config.daypart_activity_default_download_path} downloaded at {engine.config.daypart_activity_url}')
-        else:
-            raise Exception(f"Failed to download pdf at {engine.config.daypart_activity_url}")
-
     # logging errors    
     except Exception as error:
         engine.driver.close()
