@@ -7,9 +7,9 @@ import directories
 import routes
 import data
 import date
+import scripts
 
 # class methods
-from ._init_script import init_script
 from ._run import run
 
 class engine:
@@ -20,8 +20,8 @@ class engine:
         self.routes = routes.routes()
         self.data = data.data()
         self.date = date.date()
+        self.scripts = scripts.scripts()
     
-    def init_script(self): init_script(self)
     def run(self): run(self)
 
 

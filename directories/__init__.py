@@ -4,10 +4,6 @@ import glob
 class directories:
 
     def __init__(self):
-        self.project = os.path.join(os.environ.get('HOME'), 'Desktop', 'Projects', 'auto')
-        self.screenshots = os.path.join(self.project, 'screenshots')
-        self.logs = os.path.join(self.project, 'logs')
-        self.master_logs = os.path.join(self.logs, 'master')
         self.downloads = os.path.join(os.environ.get("HOME"), 'Downloads')
 
     def dump(self, path):
@@ -20,4 +16,9 @@ class directories:
         
     def delete_file(self, directory, filename):
         os.remove(os.path.join(directory, filename))
+
+    def clear_downloads(self, engine):
+        if engine.config.clear_downloads == True:
+            self.dump(self.downloads)
+
 
