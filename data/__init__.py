@@ -68,5 +68,5 @@ class data:
     def extract_sales_activity(self, engine): extract_sales_activity(engine)
     def extract_cem_spreadsheet_data(self, engine): extract_cem_spreadsheet_data(engine)
     def print_cems(self): print_cems(self)
-    def get_slack_message(self): return get_slack_message(self)
+    def get_slack_message(self, engine): return get_slack_message(engine)
 

@@ -1,5 +1,6 @@
 import sys
 import time
+import os
 
 def run(self):
 
@@ -33,23 +34,24 @@ def run(self):
 
     if sys.argv[1] == '-slack':
         print("Selected slack reporting script")
-        # yesterday_unformatted = self.date.get_past_date(1)
-        # yesterday_formatted = self.date.format_date(yesterday_unformatted, 'x/x/xxxx')
+        yesterday_unformatted = self.date.get_past_date(1)
+        yesterday_formatted = self.date.format_date(yesterday_unformatted, 'x/x/xxxx')
         self.init_script()
         self.routes.login_cfa_home(self)
         self.routes.cem_report_builder(self)
         self.routes.login_service_point(self)
-        self.routes.daypart_activity(self, '12/4/2022')
-        self.routes.sales_activity(self, '12/4/2022')
-
-        if self.data.found_yesterday_daypart_activity == True and self.data.found_yesterday_sales_activity == True:
-            self.routes.log_sales_data(self)
-
-
+        self.routes.daypart_activity(self, yesterday_formatted)
+        self.routes.sales_activity(self, yesterday_formatted)
         self.data.extract_sales_activity(self)
         self.data.extract_cem_scores(self)
         self.data.extract_daypart_activity(self)
-        self.routes.slack_message(self, self.data.get_slack_message())
+
+        if os.path.exists(self.config.sales_activity_default_download_path) and os.path.exists(self.config.daypart_activity_default_download_path):
+            self.routes.log_sales_data(self)
+
+
+
+        self.routes.slack_message(self, self.data.get_slack_message(self))
         print(vars(self.data))
 
 

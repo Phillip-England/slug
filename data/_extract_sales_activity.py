@@ -144,10 +144,8 @@ def extract_sales_activity(engine):
         engine.data.m_drive_thru_sales = m_drive_thru_sales
         engine.data.on_demand_sales = on_demand_sales
         engine.data.pickup_sales = pickup_sales
-        engine.found_yesterday_sales_activity = True
     
     else:
-        engine.found_yesterday_sales_activity = False
         engine.data.carryout_sales = 'N/A'
         engine.data.cfa_delivery_sales = 'N/A'
         engine.data.curbside_sales = 'N/A'

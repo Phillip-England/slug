@@ -110,11 +110,9 @@ def extract_daypart_activity(engine):
                 engine.data.total_transactions = data[i + total_transaction_steps]
                 engine.data.total_check_average = data[i + total_check_average_steps]
 
-            engine.data.found_yesterday_daypart_activity = True
             
     
     else:
-        engine.data.found_yesterday_daypart_activity = False
         engine.data.breakfast_sales = 'N/A'
         engine.data.breakfast_transactions = 'N/A'
         engine.data.breakfast_check_average = 'N/A'
