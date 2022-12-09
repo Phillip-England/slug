@@ -13,6 +13,7 @@ class config:
         self.slack_scheduled_message_time = '8:00 AM'
         self.testing_slack = True
         self.clear_downloads = True
+        self.testing_groupme = True
 
 
         #cfa login settings
@@ -107,5 +108,17 @@ class config:
         self.text_free_contact_input_id = 'contactInput'
         self.text_free_message_input_class_name = 'messageFormContainer'
         self.text_free_send_button = 'sendButton'
+
+        # deferred orders
+        self.deferred_start_date_id = 'MainContent_BusDate1_I'
+        self.deferred_end_date_id = 'MainContent_BusDate2_I'
+        self.deferred_submit_id = 'MainContent_btnGenerateButton'
+        self.deferred_order_default_download_path = os.path.join(os.environ.get("HOME"), 'Downloads', 'Deferred Orders Reports.pdf')
+
+        # groupme
+        self.groupme_username_id = 'signinUserNameInput'
+        self.groupme_password_id = 'signinPasswordInput'
+        self.groupme_chats_class_name = 'list-item'
+        self.groupme_testing_aria_label = 'Chat testing'
 
 

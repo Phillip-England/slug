@@ -10,6 +10,9 @@ from ._log_cem_data import log_cem_data
 from ._cem_spreadsheet import cem_spreadsheet
 from ._slack_message import slack_message
 from ._envysion import envysion
+from ._deferred_orders import deferred_orders
+from ._login_groupme import login_groupme
+from ._groupme_message import groupme_message
 
 class routes:
     def __init__(self):
@@ -25,3 +28,6 @@ class routes:
     def cem_spreadsheet(self, engine): cem_spreadsheet(engine)
     def slack_message(self, engine, message): slack_message(engine, message)
     def envysion(self, engine): envysion(engine)
+    def deferred_orders(self, engine, business_date): deferred_orders(engine, business_date)
+    def login_groupme(self, engine): login_groupme(engine)
+    def groupme_message(self, engine): groupme_message(engine)

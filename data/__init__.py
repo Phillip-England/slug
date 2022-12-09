@@ -5,6 +5,7 @@ from ._extract_cem_spreadsheet_data import extract_cem_spreadsheet_data
 from ._print_cems import print_cems
 from ._get_slack_message import get_slack_message
 from ._get_random_faith_message import get_random_faith_message
+from ._extract_deferred_orders import extract_deferred_orders
 
 class data:
     def __init__(self):
@@ -71,4 +72,5 @@ class data:
     def print_cems(self): print_cems(self)
     def get_slack_message(self, engine): return get_slack_message(engine)
     def get_random_faith_message(self, engine): return get_random_faith_message(engine)
+    def extract_deferred_orders(self, engine): return extract_deferred_orders(engine)
 
