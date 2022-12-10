@@ -1,14 +1,24 @@
 def groupme_deferred_order_message(engine, deferred_orders):
-    pickups_complete = False
+
     tomorrow = engine.date.format_date(engine.date.get_future_date(1) ,'x/x/xxxx')
-    message = f'Deferred Order Report {tomorrow} \n\nPICKUP ORDERS \n'
+    intro = f'Deferred Order Report {tomorrow}'
+    pickup_header = 'PICKUP ORDERS'
+    delivery_header = 'DELIVERY ORDERS'
+    br = 'BREAK'
+    
+    pickup_orders = deferred_orders[0]
+    delivery_orders = deferred_orders[1]
+    message = [intro, br, br]
 
-    for order in deferred_orders:
+    for order in pickup_orders:
+        message.append(order)
+        message.append(br)
 
-        if order[0] == 'D' and pickups_complete == False:
-            message = message + '\n' + 'DELIVERY ORDERS' + '\n'
-            pickups_complete = True
+    message.append(br)
 
-        message = message + order + '\n'
+    for order in delivery_orders:
+        message.append(order)
+        message.append(br)
+
 
     return message

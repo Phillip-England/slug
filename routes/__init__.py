@@ -30,4 +30,4 @@ class routes:
     def envysion(self, engine): envysion(engine)
     def deferred_orders(self, engine, business_date): deferred_orders(engine, business_date)
     def login_groupme(self, engine): login_groupme(engine)
-    def groupme_message(self, engine): groupme_message(engine)
+    def groupme_message(self, engine, message): groupme_message(engine, message)

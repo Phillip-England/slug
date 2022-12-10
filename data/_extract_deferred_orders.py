@@ -39,13 +39,4 @@ def extract_deferred_orders(engine):
                 if destination == 'PICKUP':
                     pickup_orders.append(f'{destination} {time} {cost}')
 
-        # meshing data
-        all_orders = []
-
-        for order in pickup_orders:
-            all_orders.append(order)
-
-        for order in delivery_orders:
-            all_orders.append(order)
-
-        return all_orders
+        return (pickup_orders, delivery_orders)

@@ -10,9 +10,9 @@ def get_future_date(days_in_future):
         datetime.datetime.now().day
     )
 
-    # getting the past day
+    # getting future
     delta = datetime.timedelta(days=days_in_future)
-    past_date = start_date + delta
+    future_date = start_date + delta
 
 
     # getting past date out of original format
@@ -20,7 +20,7 @@ def get_future_date(days_in_future):
     day = ''
     year = ''
     dash_count = 0
-    for char in str(past_date):
+    for char in str(future_date):
         if char == '-':
             dash_count = dash_count + 1
             continue

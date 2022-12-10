@@ -120,5 +120,8 @@ class config:
         self.groupme_password_id = 'signinPasswordInput'
         self.groupme_chats_class_name = 'list-item'
         self.groupme_testing_aria_label = 'Chat testing'
+        self.groupme_southroads_leadership_aria_label = 'Chat Southroads Leadership'
+        self.groupme_testing_messaging_area_id = 'message-composer-90967387'
+        self.groupme_southroads_leadership_messaging_area_id = 'message-composer-15570590'
 
 
