@@ -1,8 +1,6 @@
-import os
+def cems_for_slack_groupme(engine):
 
-def get_slack_message(engine):
-
-    intro = 'Good morning Directors! Here is a breakdown of current business results.'
+    intro = 'Here is a breakdown of our current CEM scores'
     br = 'BREAK'
     line = '======================='
 

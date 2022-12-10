@@ -1,4 +1,4 @@
-def groupme_deferred_order_message(engine, deferred_orders):
+def catering_for_slack_groupme(engine, deferred_orders):
 
     tomorrow = engine.date.format_date(engine.date.get_future_date(1) ,'x/x/xxxx')
     intro = f'Deferred Order Report {tomorrow}'

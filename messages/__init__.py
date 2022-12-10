@@ -1,8 +1,12 @@
-from ._groupme_deferred_order_message import groupme_deferred_order_message
+from ._catering_for_slack_groupme import catering_for_slack_groupme
+from ._cems_for_slack_groupme import cems_for_slack_groupme
+from ._faith import faith
 
 
 class messages:
     def __init__(self):
         pass
 
-    def groupme_deferred_order_message(self, engine, deferred_orders): return groupme_deferred_order_message(engine, deferred_orders)
+    def catering_for_slack_groupme(self, engine, deferred_orders): return catering_for_slack_groupme(engine, deferred_orders)
+    def cems_for_slack_groupme(self, engine): return cems_for_slack_groupme(engine)
+    def faith(self, engine): return faith()

@@ -10,22 +10,6 @@ def slack_message(engine, message):
     try:
 
         if engine.config.testing_slack == True:
-            engine.driver.get(os.environ.get('SLACK_TESTING_LOGIN_PAGE'))
-        else:
-            engine.driver.get(os.environ.get("SLACK_LOGIN_PAGE"))
-
-        slack_email_input = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.slack_email_input_id)))
-
-        slack_password_input = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.slack_password_input_id)))
-
-        slack_signin_button = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.slack_sign_in_button_id)))
-
-        slack_email_input.send_keys(os.environ.get("SLACK_EMAIL"))
-        slack_password_input.send_keys(os.environ.get("SLACK_PASSWORD"))
-
-        slack_signin_button.click()
-
-        if engine.config.testing_slack == True:
             engine.driver.get(os.environ.get("SLACK_TESTING"))
         else:
             engine.driver.get(os.environ.get("SLACK_CFASOUTHROADS"))

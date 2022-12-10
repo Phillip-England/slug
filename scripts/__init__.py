@@ -1,14 +1,16 @@
 
-from ._track_previous_day_sales import track_previous_day_sales
-from ._send_daily_slack_message import send_daily_slack_message
-from ._send_faith_message import send_faith_message
-from ._send_catering_group_me import send_next_day_catering_group_me
+from ._track_southroads_sales import track_southroads_sales
+from ._cem_message import cem_message
+from ._faith_message import faith_message
+from ._catering_message import catering_message
+from ._southroads_reports import southroads_reports
 
 class scripts:
     def __init__(self):
         pass
 
-    def track_previous_day_sales(self, engine): track_previous_day_sales(engine)
-    def send_daily_slack_message(self, engine): send_daily_slack_message(engine)
-    def send_faith_message(self, engine): send_faith_message(engine)
-    def send_next_day_catering_group_me(self, engine): send_next_day_catering_group_me(engine)
+    def southroads_reports(self, engine): southroads_reports(engine)
+    def track_southroads_sales(self, engine): track_southroads_sales(engine)
+    def cem_message(self, engine): cem_message(engine)
+    def faith_message(self, engine): faith_message(engine)
+    def catering_message(self, engine): catering_message(engine)

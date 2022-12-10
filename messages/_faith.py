@@ -1,6 +1,6 @@
 import random
 
-def get_random_faith_message(engine):
+def faith(engine):
     
     messages = [
 
@@ -19,4 +19,3 @@ def get_random_faith_message(engine):
     ]
 
     return random.choice(messages)
-

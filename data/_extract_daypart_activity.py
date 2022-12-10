@@ -103,6 +103,7 @@ def extract_daypart_activity(engine):
             
     
     else:
+        
         engine.data.daypart_activity['breakfast_sales'] = 'N/A'
         engine.data.daypart_activity['breakfast_transactions'] = 'N/A'
         engine.data.daypart_activity['breakfast_check_average'] = 'N/A'

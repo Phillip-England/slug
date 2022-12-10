@@ -5,9 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
-def send_faith_message(engine):
-
-    engine.driver.maximize_window()
+def faith_message(engine):
 
     engine.driver.get(os.environ.get('TEXT_FREE_WEBSITE'))
 

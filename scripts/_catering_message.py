@@ -1,4 +1,4 @@
-def send_next_day_catering_group_me(engine):
+def catering_message(engine):
     # engine.directories.clear_downloads(engine)
     # engine.driver.maximize_window()
     # tomorrow_unformatted = engine.date.get_future_date(0)
@@ -7,6 +7,6 @@ def send_next_day_catering_group_me(engine):
     # engine.routes.login_service_point(engine)
     # engine.routes.deferred_orders(engine, tomorrow_formatted)
     deferred_orders = engine.data.extract_deferred_orders(engine)
-    message = engine.messages.groupme_deferred_order_message(engine, deferred_orders)
+    message = engine.messages.catering_for_slack_groupme(engine, deferred_orders)
     engine.routes.login_groupme(engine)
     engine.routes.groupme_message(engine, message)

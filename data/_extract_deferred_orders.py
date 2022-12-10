@@ -18,8 +18,6 @@ def extract_deferred_orders(engine):
 
         # we are going to use dollar amounts as our indicator. The first dollar sign in the report will trigger us to start searching for data using steps
 
-        pickup_orders = []
-        delivery_orders = []
         destination_step = 1
         order_time_step = 5
         order_am_or_pm_step = 6
@@ -34,9 +32,7 @@ def extract_deferred_orders(engine):
 
 
                 if destination == 'DELIVERY':
-                    delivery_orders.append(f'{destination} {time} {cost}')
+                    engine.data.delivery_orders.append(f'{destination} {time} {cost}')
 
                 if destination == 'PICKUP':
-                    pickup_orders.append(f'{destination} {time} {cost}')
-
-        return (pickup_orders, delivery_orders)
+                    engine.data.pickup_orders.append(f'{destination} {time} {cost}')
