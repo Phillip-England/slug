@@ -1,3 +1,4 @@
+from routes import slack
 
 # class methods
 from ._login_cfa_home import login_cfa_home
@@ -13,9 +14,10 @@ from ._deferred_orders import deferred_orders
 from ._login_groupme import login_groupme
 from ._groupme_message import groupme_message
 
+
 class routes:
     def __init__(self):
-        pass
+        self.slack = slack.slack()
 
     # report downloads
     def daypart_activity(self, engine, date): daypart_activity(engine, date)
@@ -27,7 +29,6 @@ class routes:
     def login_cfa_home(self, engine): login_cfa_home(engine)
     def login_service_point(self, engine): login_service_point(engine)
     def login_groupme(self, engine): login_groupme(engine)
-    def login_slack(self, engine, account): login_slack(engine, account)
     def envysion(self, engine): envysion(engine)
 
     # data logging

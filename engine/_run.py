@@ -10,6 +10,7 @@ def run(self):
 
 
     if sys.argv[1] == 'cem': self.scripts.cem_message(self)
+    
     if sys.argv[1] == 'faith': self.scripts.faith_message(self)
     if sys.argv[1] == 'catering': self.scripts.catering_message(self)
 

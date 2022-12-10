@@ -7,9 +7,11 @@ def cem_message(engine):
     engine.data.extract_cem_scores(engine)
 
     if engine.config.testing_slack == True:
-        engine.routes.login_slack(engine, os.environ.get("SLACK_TESTING_LOGIN_PAGE"))
+        engine.routes.slack.login(engine, os.environ.get("SLACK_TESTING_LOGIN_PAGE"))
     else:
-        engine.routes.login_slack(engine, os.environ.get("SLACK_LOGIN_PAGE"))
+        engine.routes.slack.login(engine, os.environ.get("SLACK_LOGIN_PAGE"))
+
+    
         
 
     # message = engine.messages.cems_for_slack_groupme(engine)

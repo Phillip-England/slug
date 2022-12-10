@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
 
-def login_slack(engine, account):
+def login(engine, account):
 
     engine.driver.get(account)
 
