@@ -9,24 +9,8 @@ from ._extract_deferred_orders import extract_deferred_orders
 
 class data:
     def __init__(self):
-        pass
-        # date
-        # day
-        # breakfast_sales
-        # breakfast_transactions
-        # breakfast_check_average
-        # lunch_sales
-        # lunch_transactions
-        # lunch_check_average
-        # midshift_sales
-        # midshift_transactions
-        # midshift_check_average
-        # dinner_sales
-        # dinner_transactions
-        # dinner_check_average
-        # total_sales
-        # total_transactions
-        # total_check_average
+        self.daypart_activity = {}
+        self.sales_activity = {}
         # carryout_sales
         # cfa_delivery_sales
         # curbside sales

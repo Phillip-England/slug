@@ -1,6 +1,4 @@
 import sys
-import time
-import os
 
 def run(self):
     if sys.argv[1] == 'sales': self.scripts.track_previous_day_sales(self)

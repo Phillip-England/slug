@@ -133,27 +133,27 @@ def extract_sales_activity(engine):
         if on_demand_sales == str: on_demand_sales = str(0)
         if pickup_sales == str: pickup_sales = str(0)
 
-        engine.data.carryout_sales = carryout_sales
-        engine.data.cfa_delivery_sales = cfa_delivery_sales
-        engine.data.curbside_sales = curbside_sales
-        engine.data.delivery_sales = delivery_sales
-        engine.data.dine_in_sales = dine_in_sales
-        engine.data.drive_thru_sales = drive_thru_sales
-        engine.data.m_carryout_sales = m_carryout_sales
-        engine.data.m_dine_in_sales = m_dine_in_sales
-        engine.data.m_drive_thru_sales = m_drive_thru_sales
-        engine.data.on_demand_sales = on_demand_sales
-        engine.data.pickup_sales = pickup_sales
+        engine.data.sales_activity['carryout_sales'] = carryout_sales
+        engine.data.sales_activity['cfa_delivery_sales'] = cfa_delivery_sales
+        engine.data.sales_activity['curbside_sales'] = curbside_sales
+        engine.data.sales_activity['delivery_sales'] = delivery_sales
+        engine.data.sales_activity['dine_in_sales'] = dine_in_sales
+        engine.data.sales_activity['drive_thru_sales'] = drive_thru_sales
+        engine.data.sales_activity['m_carryout_sales'] = m_carryout_sales
+        engine.data.sales_activity['m_dine_in_sales'] = m_dine_in_sales
+        engine.data.sales_activity['m_drive_thru_sales'] = m_drive_thru_sales
+        engine.data.sales_activity['on_demand_sales'] = on_demand_sales
+        engine.data.sales_activity['pickup_sales'] = pickup_sales
     
     else:
-        engine.data.carryout_sales = 'N/A'
-        engine.data.cfa_delivery_sales = 'N/A'
-        engine.data.curbside_sales = 'N/A'
-        engine.data.delivery_sales = 'N/A'
-        engine.data.dine_in_sales = 'N/A'
-        engine.data.drive_thru_sales = 'N/A'
-        engine.data.m_carryout_sales = 'N/A'
-        engine.data.m_dine_in_sales = 'N/A'
-        engine.data.m_drive_thru_sales = 'N/A'
-        engine.data.on_demand_sales = 'N/A'
-        engine.data.pickup_sales = 'N/A'
+        engine.data.sales_activity['carryout_sales'] = 'N/A'
+        engine.data.sales_activity['cfa_delivery_sales'] = 'N/A'
+        engine.data.sales_activity['curbside_sales'] = 'N/A'
+        engine.data.sales_activity['delivery_sales'] = 'N/A'
+        engine.data.sales_activity['dine_in_sales'] = 'N/A'
+        engine.data.sales_activity['drive_thru_sales'] = 'N/A'
+        engine.data.sales_activity['m_carryout_sales'] = 'N/A'
+        engine.data.sales_activity['m_dine_in_sales'] = 'N/A'
+        engine.data.sales_activity['m_drive_thru_sales'] = 'N/A'
+        engine.data.sales_activity['on_demand_sales'] = 'N/A'
+        engine.data.sales_activity['pickup_sales'] = 'N/A'
