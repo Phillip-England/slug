@@ -1,20 +1,25 @@
 import os
-import sys
 
 def cem_message(engine):
 
     engine.driver.maximize_window()
-    engine.data.extract_cem_scores(engine)
+    engine.data.extract_cem_scores(engine.config)
+
+    message = engine.messages.cems_for_slack_groupme(engine.data)
 
     if engine.config.testing_slack == True:
-        engine.routes.slack.login(engine, os.environ.get("SLACK_TESTING_LOGIN_PAGE"))
+        engine.routes.slack.login(engine.driver, engine.config, engine.routes.slack.testing_account)
     else:
-        engine.routes.slack.login(engine, os.environ.get("SLACK_LOGIN_PAGE"))
+        engine.routes.slack.login(engine.driver, engine.config, engine.slack.routes.southroads_account)
 
-    
-        
 
-    # message = engine.messages.cems_for_slack_groupme(engine)
+    if engine.config.testing_slack == True:
+        engine.routes.slack.send_message(engine.driver, engine.config, engine.routes.slack.testing_account, message)
+    else:
+        engine.routes.slack.send_message(engine.driver, engine.config, engine.routes.slack.southroads_account, message)
+
+    engine.driver.close()
+
     # print(message)
     # engine.routes.slack_message(engine, engine.data.get_slack_message(engine))
 

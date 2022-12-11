@@ -1,18 +1,18 @@
 import PyPDF2
 import os
 
-def extract_cem_scores(engine):
+def extract_cem_scores(self, config):
 
-    if os.path.exists(engine.config.cem_report_download_path_current_month) and os.path.exists(engine.config.cem_report_download_path_ninty_day_rolling) and os.path.exists(engine.config.cem_report_download_path_year_to_date):
+    if os.path.exists(config.cem_report_download_path_current_month) and os.path.exists(config.cem_report_download_path_ninty_day_rolling) and os.path.exists(config.cem_report_download_path_year_to_date):
 
         # pulling data from CEM score PDF
-        cm_report = open(engine.config.cem_report_download_path_current_month, 'rb')
+        cm_report = open(config.cem_report_download_path_current_month, 'rb')
         cm_reader = PyPDF2.PdfFileReader(cm_report)
 
-        ndr_report = open(engine.config.cem_report_download_path_ninty_day_rolling, 'rb')
+        ndr_report = open(config.cem_report_download_path_ninty_day_rolling, 'rb')
         ndr_reader = PyPDF2.PdfFileReader(ndr_report)
 
-        ytd_report = open(engine.config.cem_report_download_path_year_to_date, 'rb')
+        ytd_report = open(config.cem_report_download_path_year_to_date, 'rb')
         ytd_reader = PyPDF2.PdfFileReader(ytd_report)
 
         # extracting the data and splitting by word
@@ -72,99 +72,99 @@ def extract_cem_scores(engine):
                     # the score is found 10 steps after the indicator
 
                     if report_type == 'cm':
-                        engine.data.cems['cm_osat'] = data[i+osat_steps]
+                        self.cems['cm_osat'] = data[i+osat_steps]
 
                     if report_type == 'ndr':
-                        engine.data.cems['ndr_osat'] = data[i+osat_steps]
+                        self.cems['ndr_osat'] = data[i+osat_steps]
 
                     if report_type == 'ytd':
-                        engine.data.cems['ytd_osat'] = data[i+osat_steps]
+                        self.cems['ytd_osat'] = data[i+osat_steps]
                 
                 # scraping taste data
                 # we can also scrape the amount of total surveys here as the number comes directly before the taste indicator
                 if data[i] == taste_indicator:
 
                     if report_type == 'cm':
-                        engine.data.cems['cm_taste'] = data[i+taste_steps]
-                        engine.data.cems['cm_number_of_surveys'] = data[i - 1]
+                        self.cems['cm_taste'] = data[i+taste_steps]
+                        self.cems['cm_number_of_surveys'] = data[i - 1]
 
                     if report_type == 'ndr':
-                        engine.data.cems['ndr_taste'] = data[i+taste_steps]
-                        engine.data.cems['ndr_number_of_surveys'] = data[i - 1]
+                        self.cems['ndr_taste'] = data[i+taste_steps]
+                        self.cems['ndr_number_of_surveys'] = data[i - 1]
 
                     if report_type == 'ytd':
-                        engine.data.cems['ytd_taste'] = data[i+taste_steps]
-                        engine.data.cems['ytd_number_of_surveys'] = data[i - 1]
+                        self.cems['ytd_taste'] = data[i+taste_steps]
+                        self.cems['ytd_number_of_surveys'] = data[i - 1]
 
                 # scraping fast service data
                 if data[i] == fast_service_indicator:
 
                     if report_type == 'cm':
-                        engine.data.cems['cm_speed'] = data[i+fast_service_steps]
+                        self.cems['cm_speed'] = data[i+fast_service_steps]
 
                     if report_type == 'ndr':
-                        engine.data.cems['ndr_speed'] = data[i+fast_service_steps]
+                        self.cems['ndr_speed'] = data[i+fast_service_steps]
 
                     if report_type == 'ytd':
-                        engine.data.cems['ytd_speed'] = data[i+fast_service_steps]
+                        self.cems['ytd_speed'] = data[i+fast_service_steps]
 
                 # scraping ace data
                 if data[i] == ace_indicator:
 
                     if report_type == 'cm':
-                        engine.data.cems['cm_ace'] = data[i+ace_steps]
+                        self.cems['cm_ace'] = data[i+ace_steps]
 
                     if report_type == 'ndr':
-                        engine.data.cems['ndr_ace'] = data[i+ace_steps]
+                        self.cems['ndr_ace'] = data[i+ace_steps]
 
                     if report_type == 'ytd':
-                        engine.data.cems['ytd_ace'] = data[i+ace_steps]
+                        self.cems['ytd_ace'] = data[i+ace_steps]
 
 
                 # scraping cleanliness data
                 if data[i] == cleanliness_indicator:
 
                     if report_type == 'cm':
-                        engine.data.cems['cm_cleanliness'] = data[i+cleanliness_steps]
+                        self.cems['cm_cleanliness'] = data[i+cleanliness_steps]
 
                     if report_type == 'ndr':
-                        engine.data.cems['ndr_cleanliness'] = data[i+cleanliness_steps]
+                        self.cems['ndr_cleanliness'] = data[i+cleanliness_steps]
 
                     if report_type == 'ytd':
-                        engine.data.cems['ytd_cleanliness'] = data[i+cleanliness_steps]
+                        self.cems['ytd_cleanliness'] = data[i+cleanliness_steps]
 
 
                 # scraping accuracy data
                 if data[i] == accuracy_indicator:
 
                     if report_type == 'cm':
-                        engine.data.cems['cm_accuracy'] = data[i+accuracy_steps]
+                        self.cems['cm_accuracy'] = data[i+accuracy_steps]
 
                     if report_type == 'ndr':
-                        engine.data.cems['ndr_accuracy'] = data[i+accuracy_steps]
+                        self.cems['ndr_accuracy'] = data[i+accuracy_steps]
 
                     if report_type == 'ytd':
-                        engine.data.cems['ytd_accuracy'] = data[i+accuracy_steps]
+                        self.cems['ytd_accuracy'] = data[i+accuracy_steps]
 
     else:
-        engine.data.cem['cm_osat'] = 'N/A'
-        engine.data.cem['cm_taste'] = 'N/A'
-        engine.data.cem['cm_number_of_surveys'] = 'N/A'
-        engine.data.cem['cm_speed'] = 'N/A'
-        engine.data.cem['cm_ace'] = 'N/A'
-        engine.data.cem['cm_cleanliness'] = 'N/A'
-        engine.data.cem['cm_accuracy'] = 'N/A'
-        engine.data.cem['ndr_osat'] = 'N/A'
-        engine.data.cem['ndr_taste'] = 'N/A'
-        engine.data.cem['ndr_number_of_surveys'] = 'N/A'
-        engine.data.cem['ndr_speed'] = 'N/A'
-        engine.data.cem['ndr_ace'] = 'N/A'
-        engine.data.cem['ndr_cleanliness'] = 'N/A'
-        engine.data.cem['ndr_accuracy'] = 'N/A'
-        engine.data.cem['ytd_osat'] = 'N/A'
-        engine.data.cem['ytd_taste'] = 'N/A'
-        engine.data.cem['ytd_number_of_surveys'] = 'N/A'
-        engine.data.cem['ytd_speed'] = 'N/A'
-        engine.data.cem['ytd_ace'] = 'N/A'
-        engine.data.cem['ytd_cleanliness'] = 'N/A'
-        engine.data.cem['ytd_accuracy'] = 'N/A'
+        self.cem['cm_osat'] = 'N/A'
+        self.cem['cm_taste'] = 'N/A'
+        self.cem['cm_number_of_surveys'] = 'N/A'
+        self.cem['cm_speed'] = 'N/A'
+        self.cem['cm_ace'] = 'N/A'
+        self.cem['cm_cleanliness'] = 'N/A'
+        self.cem['cm_accuracy'] = 'N/A'
+        self.cem['ndr_osat'] = 'N/A'
+        self.cem['ndr_taste'] = 'N/A'
+        self.cem['ndr_number_of_surveys'] = 'N/A'
+        self.cem['ndr_speed'] = 'N/A'
+        self.cem['ndr_ace'] = 'N/A'
+        self.cem['ndr_cleanliness'] = 'N/A'
+        self.cem['ndr_accuracy'] = 'N/A'
+        self.cem['ytd_osat'] = 'N/A'
+        self.cem['ytd_taste'] = 'N/A'
+        self.cem['ytd_number_of_surveys'] = 'N/A'
+        self.cem['ytd_speed'] = 'N/A'
+        self.cem['ytd_ace'] = 'N/A'
+        self.cem['ytd_cleanliness'] = 'N/A'
+        self.cem['ytd_accuracy'] = 'N/A'

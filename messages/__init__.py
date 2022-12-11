@@ -8,5 +8,5 @@ class messages:
         pass
 
     def catering_for_slack_groupme(self, engine, deferred_orders): return catering_for_slack_groupme(engine, deferred_orders)
-    def cems_for_slack_groupme(self, engine): return cems_for_slack_groupme(engine)
+    def cems_for_slack_groupme(self, data): return cems_for_slack_groupme(data)
     def faith(self, engine): return faith()

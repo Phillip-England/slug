@@ -11,8 +11,8 @@ class data:
         self.pickup_orders = []
         self.delivery_orders = []
 
-    def extract_daypart_activity(self, engine): extract_daypart_activity(engine)
-    def extract_cem_scores(self, engine): extract_cem_scores(engine)
-    def extract_sales_activity(self, engine): extract_sales_activity(engine)
-    def extract_deferred_orders(self, engine): extract_deferred_orders(engine)
+    def extract_daypart_activity(self, config): extract_daypart_activity(self, config)
+    def extract_cem_scores(self, config): extract_cem_scores(self, config)
+    def extract_sales_activity(self, config): extract_sales_activity(self, config)
+    def extract_deferred_orders(self, config): extract_deferred_orders(self, config)
 

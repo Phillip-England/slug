@@ -1,7 +1,3 @@
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-
-# local classes
 import config
 import directories
 import routes
@@ -10,7 +6,6 @@ import date
 import scripts
 import messages
 
-# class methods
 from ._run import run
 
 class engine:

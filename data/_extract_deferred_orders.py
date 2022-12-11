@@ -1,13 +1,13 @@
 import os
 import PyPDF2
 
-def extract_deferred_orders(engine):
+def extract_deferred_orders(self, config):
     
     #checking if our pdf exists. If our bot ran the report for a Sunday date or a date we are closed, it will not proceed
-    if os.path.exists(engine.config.deferred_order_default_download_path):
+    if os.path.exists(config.deferred_order_default_download_path):
 
         # pulling daypart activity report data from PDF
-        report = open(engine.config.deferred_order_default_download_path, 'rb')
+        report = open(config.deferred_order_default_download_path, 'rb')
         reader = PyPDF2.PdfFileReader(report)
 
         # extracting data from the pdf and splitting the data by word                                     
@@ -32,7 +32,7 @@ def extract_deferred_orders(engine):
 
 
                 if destination == 'DELIVERY':
-                    engine.data.delivery_orders.append(f'{destination} {time} {cost}')
+                    self.delivery_orders.append(f'{destination} {time} {cost}')
 
                 if destination == 'PICKUP':
-                    engine.data.pickup_orders.append(f'{destination} {time} {cost}')
+                    self.pickup_orders.append(f'{destination} {time} {cost}')

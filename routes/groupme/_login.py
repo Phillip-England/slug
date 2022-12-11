@@ -4,15 +4,18 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
-def login_groupme(engine):
+def login(driver, config):
 
-    engine.driver.get(os.environ.get("GROUPME_LOGIN_PAGE"))
+    username_id = 'signinUserNameInput'
+    password_id = 'signinPasswordInput'
 
-    username_input = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.groupme_username_id)))
+    driver.get(os.environ.get("GROUPME_LOGIN_PAGE"))
 
-    password_input = engine.driver.find_element(By.ID, engine.config.groupme_password_id)   
+    username_input = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, username_id)))
+
+    password_input = driver.find_element(By.ID, password_id)   
     
-    if engine.config.testing_groupme == True:
+    if config.testing_groupme == True:
         username_input.send_keys(os.environ.get("GROUPME_TESTING_USERNAME"))
         password_input.send_keys(os.environ.get("GROUPME_TESTING_PASSWORD"))
     else:

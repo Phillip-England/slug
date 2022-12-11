@@ -6,21 +6,25 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
 
-def login(engine, account):
+def login(driver, config, account):
 
-    engine.driver.get(account)
+    email_id = 'email'
+    password_id = 'password'
+    submit_id = 'signin_btn'
 
-    slack_email_input = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.slack_email_input_id)))
+    driver.get(account[0].get('login_url'))
 
-    slack_password_input = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.slack_password_input_id)))
+    slack_email_input = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, email_id)))
 
-    slack_signin_button = WebDriverWait(engine.driver, engine.config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, engine.config.slack_sign_in_button_id)))
+    slack_password_input = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, password_id)))
 
-    slack_email_input.send_keys(os.environ.get("SLACK_EMAIL"))
-    slack_password_input.send_keys(os.environ.get("SLACK_PASSWORD"))
+    slack_signin_button = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, submit_id)))
+
+    slack_email_input.send_keys(account[0].get('email'))
+    slack_password_input.send_keys(account[0].get('password'))
 
     slack_signin_button.click()
 
-    time.sleep(5)
+    time.sleep(2)
 
     pyautogui.press('enter')

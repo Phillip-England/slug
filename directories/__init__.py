@@ -17,8 +17,7 @@ class directories:
     def delete_file(self, directory, filename):
         os.remove(os.path.join(directory, filename))
 
-    def clear_downloads(self, engine):
-        if engine.config.clear_downloads == True:
-            self.dump(self.downloads)
+    def clear_downloads(self):
+        self.dump(self.downloads)
 
 

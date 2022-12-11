@@ -1,9 +1,26 @@
+import os
+
 from ._login import login
+from ._send_message import send_message
 
 class slack:
     def __init__(self):
-        pass
 
-    def login(self, engine, account): login(engine, account)
+        self.testing_account = {
+            'login_url': os.environ.get("SLACK_TESTING_LOGIN_PAGE"),
+            'home_url': os.environ.get("SLACK_TESTING"),
+            'email': os.environ.get("SLACK_EMAIL"),
+            'password': os.environ.get("SLACK_PASSWORD")
+        },
+
+        self.southroads_account = {
+            'login_url': os.environ.get("SLACK_LOGIN_PAGE"),
+            'home_url': os.environ.get("SLACK_CFASOUTHROADS"),
+            'email': os.environ.get("SLACK_EMAIL"),
+            'password': os.environ.get("SLACK_PASSWORD")
+        }
+
+    def login(self, driver, config, account): login(driver, config, account)
+    def send_message(self, driver, config, account, message): send_message(driver, config, account, message)
 
     

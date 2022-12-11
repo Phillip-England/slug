@@ -1,12 +1,12 @@
 import PyPDF2
 import os
 
-def extract_sales_activity(engine):
+def extract_sales_activity(self, config):
 
-    if os.path.exists(engine.config.sales_activity_default_download_path):
+    if os.path.exists(config.sales_activity_default_download_path):
 
         # pulling sales activity pdf
-        report = open(engine.config.sales_activity_default_download_path, 'rb')
+        report = open(config.sales_activity_default_download_path, 'rb')
         reader = PyPDF2.PdfFileReader(report)
 
         # extracting each word from the pdf
@@ -133,27 +133,27 @@ def extract_sales_activity(engine):
         if on_demand_sales == str: on_demand_sales = str(0)
         if pickup_sales == str: pickup_sales = str(0)
 
-        engine.data.sales_activity['carryout_sales'] = carryout_sales
-        engine.data.sales_activity['cfa_delivery_sales'] = cfa_delivery_sales
-        engine.data.sales_activity['curbside_sales'] = curbside_sales
-        engine.data.sales_activity['delivery_sales'] = delivery_sales
-        engine.data.sales_activity['dine_in_sales'] = dine_in_sales
-        engine.data.sales_activity['drive_thru_sales'] = drive_thru_sales
-        engine.data.sales_activity['m_carryout_sales'] = m_carryout_sales
-        engine.data.sales_activity['m_dine_in_sales'] = m_dine_in_sales
-        engine.data.sales_activity['m_drive_thru_sales'] = m_drive_thru_sales
-        engine.data.sales_activity['on_demand_sales'] = on_demand_sales
-        engine.data.sales_activity['pickup_sales'] = pickup_sales
+        self.sales_activity['carryout_sales'] = carryout_sales
+        self.sales_activity['cfa_delivery_sales'] = cfa_delivery_sales
+        self.sales_activity['curbside_sales'] = curbside_sales
+        self.sales_activity['delivery_sales'] = delivery_sales
+        self.sales_activity['dine_in_sales'] = dine_in_sales
+        self.sales_activity['drive_thru_sales'] = drive_thru_sales
+        self.sales_activity['m_carryout_sales'] = m_carryout_sales
+        self.sales_activity['m_dine_in_sales'] = m_dine_in_sales
+        self.sales_activity['m_drive_thru_sales'] = m_drive_thru_sales
+        self.sales_activity['on_demand_sales'] = on_demand_sales
+        self.sales_activity['pickup_sales'] = pickup_sales
     
     else:
-        engine.data.sales_activity['carryout_sales'] = 'N/A'
-        engine.data.sales_activity['cfa_delivery_sales'] = 'N/A'
-        engine.data.sales_activity['curbside_sales'] = 'N/A'
-        engine.data.sales_activity['delivery_sales'] = 'N/A'
-        engine.data.sales_activity['dine_in_sales'] = 'N/A'
-        engine.data.sales_activity['drive_thru_sales'] = 'N/A'
-        engine.data.sales_activity['m_carryout_sales'] = 'N/A'
-        engine.data.sales_activity['m_dine_in_sales'] = 'N/A'
-        engine.data.sales_activity['m_drive_thru_sales'] = 'N/A'
-        engine.data.sales_activity['on_demand_sales'] = 'N/A'
-        engine.data.sales_activity['pickup_sales'] = 'N/A'
+        self.sales_activity['carryout_sales'] = 'N/A'
+        self.sales_activity['cfa_delivery_sales'] = 'N/A'
+        self.sales_activity['curbside_sales'] = 'N/A'
+        self.sales_activity['delivery_sales'] = 'N/A'
+        self.sales_activity['dine_in_sales'] = 'N/A'
+        self.sales_activity['drive_thru_sales'] = 'N/A'
+        self.sales_activity['m_carryout_sales'] = 'N/A'
+        self.sales_activity['m_dine_in_sales'] = 'N/A'
+        self.sales_activity['m_drive_thru_sales'] = 'N/A'
+        self.sales_activity['on_demand_sales'] = 'N/A'
+        self.sales_activity['pickup_sales'] = 'N/A'

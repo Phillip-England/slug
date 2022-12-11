@@ -1,13 +1,13 @@
 import PyPDF2
 import os
 
-def extract_daypart_activity(engine):
+def extract_daypart_activity(self, config):
 
     #checking if our pdf exists. If our bot ran the report for a Sunday date or a date we are closed, it will not proceed
-    if os.path.exists(engine.config.daypart_activity_default_download_path):
+    if os.path.exists(config.daypart_activity_default_download_path):
 
         # pulling daypart activity report data from PDF
-        report = open(engine.config.daypart_activity_default_download_path, 'rb')
+        report = open(config.daypart_activity_default_download_path, 'rb')
         reader = PyPDF2.PdfFileReader(report)
 
         # extracting data from the pdf and splitting the data by word                                     
@@ -67,55 +67,55 @@ def extract_daypart_activity(engine):
                 business_month = data[i+month_steps]
                 business_day = data[i+day_steps]
                 business_year = data[i+year_steps]
-                engine.data.daypart_activity['date'] = f'{business_month} {business_day} {business_year}'
-                engine.data.daypart_activity['day'] = day_of_week
+                self.daypart_activity['date'] = f'{business_month} {business_day} {business_year}'
+                self.daypart_activity['day'] = day_of_week
 
             #breakfast sales data
             if data[i] == breakfast_indicator:
-                engine.data.daypart_activity['breakfast_sales'] = data[i + breakfast_sales_steps]
-                engine.data.daypart_activity['breakfast_transactions'] = data[i + breakfast_transaction_steps]
-                engine.data.daypart_activity['breakfast_check_average'] = data[i + breakfast_check_average_steps]
+                self.daypart_activity['breakfast_sales'] = data[i + breakfast_sales_steps]
+                self.daypart_activity['breakfast_transactions'] = data[i + breakfast_transaction_steps]
+                self.daypart_activity['breakfast_check_average'] = data[i + breakfast_check_average_steps]
 
             #lunch sales data
             if data[i] == lunch_indicator:
-                engine.data.daypart_activity['lunch_sales'] = data[i + lunch_sales_steps]
-                engine.data.daypart_activity['lunch_transactions'] = data[i + lunch_transaction_steps]
-                engine.data.daypart_activity['lunch_check_average'] = data[i + lunch_check_average_steps]
+                self.daypart_activity['lunch_sales'] = data[i + lunch_sales_steps]
+                self.daypart_activity['lunch_transactions'] = data[i + lunch_transaction_steps]
+                self.daypart_activity['lunch_check_average'] = data[i + lunch_check_average_steps]
 
             #midshift sales data
             if data[i] == midshift_indicator:
-                engine.data.daypart_activity['midshift_sales'] = data[i + midshift_sales_steps]
-                engine.data.daypart_activity['midshift_transactions'] = data[i + midshift_transaction_steps]
-                engine.data.daypart_activity['midshift_check_average'] = data[i + midshift_check_average_steps]
+                self.daypart_activity['midshift_sales'] = data[i + midshift_sales_steps]
+                self.daypart_activity['midshift_transactions'] = data[i + midshift_transaction_steps]
+                self.daypart_activity['midshift_check_average'] = data[i + midshift_check_average_steps]
 
             #dinner sales data
             if data[i] == dinner_indicator:
-                engine.data.daypart_activity['dinner_sales'] = data[i + dinner_sales_steps]
-                engine.data.daypart_activity['dinner_transactions'] = data[i + dinner_transaction_steps]
-                engine.data.daypart_activity['dinner_check_average'] = data[i + dinner_check_average_steps]
+                self.daypart_activity['dinner_sales'] = data[i + dinner_sales_steps]
+                self.daypart_activity['dinner_transactions'] = data[i + dinner_transaction_steps]
+                self.daypart_activity['dinner_check_average'] = data[i + dinner_check_average_steps]
 
             #daily totals
             if data[i] == total_indicator and data[i-1] == 'Report':
-                engine.data.daypart_activity['total_sales'] = data[i + total_sales_steps]
-                engine.data.daypart_activity['total_transactions'] = data[i + total_transaction_steps]
-                engine.data.daypart_activity['total_check_average'] = data[i + total_check_average_steps]
+                self.daypart_activity['total_sales'] = data[i + total_sales_steps]
+                self.daypart_activity['total_transactions'] = data[i + total_transaction_steps]
+                self.daypart_activity['total_check_average'] = data[i + total_check_average_steps]
 
             
     
     else:
         
-        engine.data.daypart_activity['breakfast_sales'] = 'N/A'
-        engine.data.daypart_activity['breakfast_transactions'] = 'N/A'
-        engine.data.daypart_activity['breakfast_check_average'] = 'N/A'
-        engine.data.daypart_activity['lunch_sales'] = 'N/A'
-        engine.data.daypart_activity['lunch_transactions'] = 'N/A'
-        engine.data.daypart_activity['lunch_check_average'] = 'N/A'
-        engine.data.daypart_activity['midshift_sales'] = 'N/A'
-        engine.data.daypart_activity['midshift_transactions'] = 'N/A'
-        engine.data.daypart_activity['midshift_check_average'] = 'N/A'
-        engine.data.daypart_activity['dinner_sales'] = 'N/A'
-        engine.data.daypart_activity['dinner_transactions'] = 'N/A'
-        engine.data.daypart_activity['dinner_check_average'] = 'N/A'
-        engine.data.daypart_activity['total_sales'] = 'N/A'
-        engine.data.daypart_activity['total_transactions'] = 'N/A'
-        engine.data.daypart_activity['total_check_average'] = 'N/A'
+        self.daypart_activity['breakfast_sales'] = 'N/A'
+        self.daypart_activity['breakfast_transactions'] = 'N/A'
+        self.daypart_activity['breakfast_check_average'] = 'N/A'
+        self.daypart_activity['lunch_sales'] = 'N/A'
+        self.daypart_activity['lunch_transactions'] = 'N/A'
+        self.daypart_activity['lunch_check_average'] = 'N/A'
+        self.daypart_activity['midshift_sales'] = 'N/A'
+        self.daypart_activity['midshift_transactions'] = 'N/A'
+        self.daypart_activity['midshift_check_average'] = 'N/A'
+        self.daypart_activity['dinner_sales'] = 'N/A'
+        self.daypart_activity['dinner_transactions'] = 'N/A'
+        self.daypart_activity['dinner_check_average'] = 'N/A'
+        self.daypart_activity['total_sales'] = 'N/A'
+        self.daypart_activity['total_transactions'] = 'N/A'
+        self.daypart_activity['total_check_average'] = 'N/A'
