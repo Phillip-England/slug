@@ -1,6 +1,7 @@
 import os
 
 from ._login import login
+from ._schedule_message import schedule_message
 from ._send_message import send_message
 
 class slack:
@@ -21,6 +22,6 @@ class slack:
         }
 
     def login(self, driver, config, account): login(driver, config, account)
+    def schedule_message(self, driver, config, account, message): schedule_message(driver, config, account, message)
     def send_message(self, driver, config, account, message): send_message(driver, config, account, message)
-
     

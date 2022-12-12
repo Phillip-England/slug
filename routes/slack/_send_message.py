@@ -29,43 +29,6 @@ def send_message(driver, config, account, message):
         else:
             message_input.send_keys(line)
 
-    send_buttons = driver.find_elements(By.CLASS_NAME, schedule_button_class_name)
-
-    for button in send_buttons:
-        if button.get_attribute('aria-label') == schedule_button_aria_label:
-            schedule_button = button
-
-    schedule_button.click()
     time.sleep(2)
-
-    c_menu_items = driver.find_elements(By.CLASS_NAME, custom_time_button_class_name)
-    
-    for element in c_menu_items:
-        if element.text == 'Custom time':
-            custom_time_button = element
-
-    custom_time_button.click()
-
-    time_slot = driver.find_elements(By.CLASS_NAME, time_slot_class_name)
-
-    time_slot[0].click()
-
-    time.sleep(1)
-
-    pyautogui.press('backspace')
-
-    time.sleep(1)
-
-    pyautogui.typewrite(config.slack_scheduled_message_time, config.pyautogui_type_speed)
     pyautogui.press('enter')
-    time.sleep(2)
-
-    buttons = driver.find_elements(By.CLASS_NAME, schedule_message_button_class_name)
-
-    for button in buttons:
-        if button.get_attribute('data-qa') == 'schedule_message_dialog_submit_button':
-            submit_button = button
-
-    submit_button.click()
-
-    time.sleep(5)            
+    time.sleep(1)

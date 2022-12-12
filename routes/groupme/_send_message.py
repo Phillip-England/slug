@@ -16,7 +16,6 @@ def send_message(driver, config, account, message):
 
     for chat in chats:
         if chat.get_attribute('aria-label') == account.get('chat_aria_label'):
-            print(chat.get_attribute('aria-label'))
             selected_chat = chat
 
     selected_chat.click()

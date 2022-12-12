@@ -10,16 +10,15 @@ def run(self):
 
 
     if sys.argv[1] == 'cem': 
-        
-        if sys.argv[2] == '-slack':
-            self.scripts.cem_slack(self)
-
-        if sys.argv[2] == '-groupme':
-            self.scripts.cem_groupme(self)
+        if sys.argv[2] == '-slack': self.scripts.cem_slack(self)
+        if sys.argv[2] == '-groupme': self.scripts.cem_groupme(self)
     
     if sys.argv[1] == 'faith': self.scripts.faith_message(self)
     
-    if sys.argv[1] == 'catering': self.scripts.catering_message(self)
+    if sys.argv[1] == 'catering': 
+        if sys.argv[2] == '-slack': self.scripts.catering_slack(self)
+        if sys.argv[2] == '-groupme': self.scripts.catering_groupme(self)
+        
 
 
 
