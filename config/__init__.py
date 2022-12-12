@@ -20,10 +20,6 @@ class config:
         self.sales_activity_default_download_path = os.path.join(os.environ.get('HOME'), 'Downloads', 'Sales Activity Report.pdf')
         self.deferred_order_default_download_path = os.path.join(os.environ.get("HOME"), 'Downloads', 'Deferred Orders Reports.pdf')
 
-        # slack
-
-
-
         #envysion
         self.envysion_email_input_id = 'login-username'
         self.envysion_password_input_id = 'login-password'
@@ -38,13 +34,3 @@ class config:
         self.text_free_contact_input_id = 'contactInput'
         self.text_free_message_input_class_name = 'messageFormContainer'
         self.text_free_send_button = 'sendButton'
-
-        # groupme
-
-        self.groupme_chats_class_name = 'list-item'
-        self.groupme_testing_aria_label = 'Chat testing'
-        self.groupme_southroads_leadership_aria_label = 'Chat Southroads Leadership'
-        self.groupme_testing_messaging_area_id = 'message-composer-90967387'
-        self.groupme_southroads_leadership_messaging_area_id = 'message-composer-15570590'
-
-

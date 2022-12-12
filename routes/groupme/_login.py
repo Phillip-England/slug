@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
-def login(driver, config):
+def login(driver, config, account):
 
     username_id = 'signinUserNameInput'
     password_id = 'signinPasswordInput'
@@ -15,12 +15,8 @@ def login(driver, config):
 
     password_input = driver.find_element(By.ID, password_id)   
     
-    if config.testing_groupme == True:
-        username_input.send_keys(os.environ.get("GROUPME_TESTING_USERNAME"))
-        password_input.send_keys(os.environ.get("GROUPME_TESTING_PASSWORD"))
-    else:
-        username_input.send_keys(os.environ.get("GROUPME_USERNAME"))
-        password_input.send_keys(os.environ.get("GROUPME_PASSWORD"))
+    username_input.send_keys(account.get('username'))
+    password_input.send_keys(account.get('password'))
 
 
     password_input.submit()
