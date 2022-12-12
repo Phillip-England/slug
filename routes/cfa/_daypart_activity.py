@@ -7,19 +7,13 @@ import time
 import os
 
 
-def daypart_activity(driver, config, date):
-
-    daypart_activity_url = os.environ.get("DAYPART_ACTIVITY_URL")
-    start_date_id = 'MainContent_BusDate1_B-1Img'
-    end_date_id = 'MainContent_BusDate2_B-1Img'
-    submit_id = 'MainContent_btnGenerateButton'
-    bad_day_id = 'InformationalPopup_HCB-1'
+def daypart_activity(self, driver, config, date):
 
     # loading page and getting elements
-    driver.get(daypart_activity_url)
-    start_date_input = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, start_date_id)))
-    end_date_input = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, end_date_id)))
-    submit_button = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, submit_id)))
+    driver.get(self.daypart_activity_url)
+    start_date_input = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, self.daypart_activity_start_date_id)))
+    end_date_input = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, self.daypart_activity_end_date_id)))
+    submit_button = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, self.daypart_activity_submit_id)))
 
     # entering date into date fields
     start_date_input.click()

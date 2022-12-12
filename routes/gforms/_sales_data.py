@@ -4,18 +4,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
-def sales_data(driver, config, data):
-
-    sales_tracking_form_url = os.environ.get("SALES_GOOGLE_FORM")
-    sales_form_input_class_name = 'whsOnd'
-    sales_form_submit_class_name = 'NPEfkd'
+def sales_data(self, driver, config, data):
 
     #visiting our sales tracking google form
-    driver.get(sales_tracking_form_url)
-    loading_element = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.CLASS_NAME, sales_form_input_class_name)))
+    driver.get(self.sales_tracking_form_url)
+    loading_element = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.CLASS_NAME, self.sales_form_input_class_name)))
 
-    inputs = driver.find_elements(By.CLASS_NAME, sales_form_input_class_name)
-    submit = driver.find_elements(By.CLASS_NAME, sales_form_submit_class_name)
+    inputs = driver.find_elements(By.CLASS_NAME, self.sales_form_input_class_name)
+    submit = driver.find_elements(By.CLASS_NAME, self.sales_form_submit_class_name)
 
 
     # exctracting inputs and inputting values

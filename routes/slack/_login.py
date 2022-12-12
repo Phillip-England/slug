@@ -6,19 +6,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
 
-def login(driver, config, account):
-
-    email_id = 'email'
-    password_id = 'password'
-    submit_id = 'signin_btn'
+def login(self, driver, config, account):
 
     driver.get(account[0].get('login_url'))
 
-    slack_email_input = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, email_id)))
+    slack_email_input = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, self.login_email_id)))
 
-    slack_password_input = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, password_id)))
+    slack_password_input = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, self.login_password_id)))
 
-    slack_signin_button = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, submit_id)))
+    slack_signin_button = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, self.login_submit_id)))
 
     slack_email_input.send_keys(account[0].get('email'))
     slack_password_input.send_keys(account[0].get('password'))

@@ -3,7 +3,6 @@ import directories
 import routes
 import data
 import date
-import scripts
 import messages
 
 from ._run import run
@@ -16,7 +15,6 @@ class engine:
         self.routes = routes.routes()
         self.data = data.data()
         self.date = date.date()
-        self.scripts = scripts.scripts()
         self.messages = messages.messages()
     
     def run(self): run(self)

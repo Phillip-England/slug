@@ -5,21 +5,14 @@ from selenium.webdriver.support import expected_conditions
 import time
 import pyautogui
 
-def schedule_message(driver, config, account, message):
+def schedule_message(self, driver, config, account, message):
 
-    loading_element_id = 'c-coachmark-anchor'
-    message_element_class_name = 'ql-editor'
-    schedule_button_class_name = 'c-button-unstyled'
-    schedule_button_aria_label = 'Schedule for later'
-    custom_time_button_class_name = 'c-menu_item__label'
-    time_slot_class_name = 'c-select_input__content_text'
-    schedule_message_button_class_name = 'c-button'
 
     driver.get(account[0].get('home_url'))
 
-    slack_loading_element = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, loading_element_id)))
+    slack_loading_element = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, self.loading_element_id)))
 
-    message_input = driver.find_element(By.CLASS_NAME, message_element_class_name)
+    message_input = driver.find_element(By.CLASS_NAME, self.message_element_class_name)
 
     message_input.click()
 
@@ -29,16 +22,16 @@ def schedule_message(driver, config, account, message):
         else:
             message_input.send_keys(line)
 
-    send_buttons = driver.find_elements(By.CLASS_NAME, schedule_button_class_name)
+    send_buttons = driver.find_elements(By.CLASS_NAME, self.schedule_button_class_name)
 
     for button in send_buttons:
-        if button.get_attribute('aria-label') == schedule_button_aria_label:
+        if button.get_attribute('aria-label') == self.schedule_button_aria_label:
             schedule_button = button
 
     schedule_button.click()
     time.sleep(2)
 
-    c_menu_items = driver.find_elements(By.CLASS_NAME, custom_time_button_class_name)
+    c_menu_items = driver.find_elements(By.CLASS_NAME, self.custom_time_button_class_name)
     
     for element in c_menu_items:
         if element.text == 'Custom time':
@@ -46,7 +39,7 @@ def schedule_message(driver, config, account, message):
 
     custom_time_button.click()
 
-    time_slot = driver.find_elements(By.CLASS_NAME, time_slot_class_name)
+    time_slot = driver.find_elements(By.CLASS_NAME, self.time_slot_class_name)
 
     time_slot[0].click()
 
@@ -60,7 +53,7 @@ def schedule_message(driver, config, account, message):
     pyautogui.press('enter')
     time.sleep(2)
 
-    buttons = driver.find_elements(By.CLASS_NAME, schedule_message_button_class_name)
+    buttons = driver.find_elements(By.CLASS_NAME, self.schedule_message_button_class_name)
 
     for button in buttons:
         if button.get_attribute('data-qa') == 'schedule_message_dialog_submit_button':

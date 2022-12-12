@@ -2,6 +2,8 @@ import os
 
 from ._login import login
 from ._send_message import send_message
+from ._southroads_cem_script import southroads_cem_script
+from ._southroads_catering_script import southroads_catering_script
 
 class groupme:
 
@@ -21,5 +23,18 @@ class groupme:
             'message_input_id': 'message-composer-15570590',
         }
 
-    def login(self, driver, config, account): login(driver, config, account)
-    def send_message(self, driver, config, account, message): send_message(driver, config, account, message)
+        # login settings
+        self.login_username_id = 'signinUserNameInput'
+        self.login_password_id = 'signinPasswordInput'
+
+        # chat settings
+        self.chats_class_name = 'list-item'
+
+
+    # routes
+    def login(self, driver, config, account): login(self, driver, config, account)
+    def send_message(self, driver, config, account, message): send_message(self, driver, config, account, message)
+
+    # scripts
+    def southroads_cem_script(self, engine): southroads_cem_script(engine)
+    def southroads_catering_script(self, engine): southroads_catering_script(engine)
