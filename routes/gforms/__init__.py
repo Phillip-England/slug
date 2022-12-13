@@ -1,7 +1,6 @@
 import os
 
 from ._sales_data import sales_data
-from ._track_southroads_sales import track_southroads_sales
 
 class gforms:
 
@@ -12,6 +11,3 @@ class gforms:
 
     # routes
     def sales_data(self, driver, config, data): sales_data(self, driver, config, data)
-
-    # scripts
-    def track_southroads_sales(self, engine): track_southroads_sales(engine)

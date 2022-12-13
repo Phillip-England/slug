@@ -4,6 +4,7 @@ import routes
 import data
 import date
 import messages
+import scripts
 
 from ._run import run
 
@@ -16,6 +17,7 @@ class engine:
         self.data = data.data()
         self.date = date.date()
         self.messages = messages.messages()
+        self.scripts = scripts.scripts()
     
     def run(self): run(self)
 

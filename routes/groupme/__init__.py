@@ -2,8 +2,6 @@ import os
 
 from ._login import login
 from ._send_message import send_message
-from ._southroads_cem_script import southroads_cem_script
-from ._southroads_catering_script import southroads_catering_script
 
 class groupme:
 
@@ -34,7 +32,3 @@ class groupme:
     # routes
     def login(self, driver, config, account): login(self, driver, config, account)
     def send_message(self, driver, config, account, message): send_message(self, driver, config, account, message)
-
-    # scripts
-    def southroads_cem_script(self, engine): southroads_cem_script(engine)
-    def southroads_catering_script(self, engine): southroads_catering_script(engine)

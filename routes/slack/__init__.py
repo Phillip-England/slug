@@ -3,8 +3,6 @@ import os
 from ._login import login
 from ._schedule_message import schedule_message
 from ._send_message import send_message
-from ._southroads_cem_script import southroads_cem_script
-from ._southroads_catering_script import southroads_catering_script
 
 class slack:
     def __init__(self):
@@ -41,7 +39,3 @@ class slack:
     def login(self, driver, config, account): login(self, driver, config, account)
     def schedule_message(self, driver, config, account, message): schedule_message(self, driver, config, account, message)
     def send_message(self, driver, config, account, message): send_message(self, driver, config, account, message)
-    
-    # scripts
-    def southroads_cem_script(self, engine): southroads_cem_script(engine)
-    def southroads_catering_script(self, engine): southroads_catering_script(engine)

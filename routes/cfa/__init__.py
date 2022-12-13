@@ -6,7 +6,6 @@ from ._daypart_activity import daypart_activity
 from ._sales_activity import sales_activity
 from ._cem_report_builder import cem_report_builder
 from ._catering_orders import catering_orders
-from ._southroads_reports import southroads_reports
 
 class cfa:
 
@@ -67,7 +66,3 @@ class cfa:
     def sales_activity(self, driver, config, date): sales_activity(self, driver, config, date)
     def cem_report_builder(self, driver, config): cem_report_builder(self, driver, config)
     def catering_orders(self, driver, config, date): catering_orders(self, driver, config, date)
-
-    # scripts
-    def southroads_reports(self, engine): southroads_reports(engine)
-    
