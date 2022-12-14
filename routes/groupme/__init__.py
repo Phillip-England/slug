@@ -17,7 +17,7 @@ class groupme:
         self.southroads_account = {
             'username': os.environ.get("GROUPME_USERNAME"),
             'password': os.environ.get("GROUPME_PASSWORD"),
-            'chat_aria_lable': 'Chat Southroads Leadership',
+            'chat_aria_label': 'Chat Southroads Leadership',
             'message_input_id': 'message-composer-15570590',
         }
 

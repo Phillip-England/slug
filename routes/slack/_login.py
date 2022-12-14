@@ -8,7 +8,8 @@ from selenium.webdriver.support import expected_conditions
 
 def login(self, driver, config, account):
 
-    driver.get(account[0].get('login_url'))
+
+    driver.get(account.get('login_url'))
 
     slack_email_input = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, self.login_email_id)))
 
@@ -16,8 +17,8 @@ def login(self, driver, config, account):
 
     slack_signin_button = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, self.login_submit_id)))
 
-    slack_email_input.send_keys(account[0].get('email'))
-    slack_password_input.send_keys(account[0].get('password'))
+    slack_email_input.send_keys(account.get('email'))
+    slack_password_input.send_keys(account.get('password'))
 
     slack_signin_button.click()
 

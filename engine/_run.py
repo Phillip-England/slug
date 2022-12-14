@@ -9,7 +9,8 @@ def run(self):
         if sys.argv[2] == '-sales': self.scripts.cfa_southroads.reports.sales(self)
         if sys.argv[2] == '-cems': self.scripts.cfa_southroads.reports.cems(self)
 
-    if sys.argv[1] == 'sales': self.scripts.cfa_southroads.tracking.sales(self)
+    if sys.argv[1] == 'track': 
+        if sys.argv[2] == '-sales': self.scripts.cfa_southroads.tracking.sales(self)
 
     if sys.argv[1] == 'cems': 
         if sys.argv[2] == '-slack': self.scripts.cfa_southroads.cems.slack_message(self)

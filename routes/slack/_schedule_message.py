@@ -8,7 +8,7 @@ import pyautogui
 def schedule_message(self, driver, config, account, message):
 
 
-    driver.get(account[0].get('home_url'))
+    driver.get(account.get('home_url'))
 
     slack_loading_element = WebDriverWait(driver, config.max_wait_time).until(expected_conditions.visibility_of_element_located((By.ID, self.loading_element_id)))
 
