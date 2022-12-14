@@ -8,9 +8,9 @@ class config:
         self.max_wait_time = 60 
         self.pyautogui_type_speed = 0.05
         self.slack_scheduled_message_time = '8:00 AM'
-        self.testing_slack = False
+        self.testing_slack = True
         self.clear_downloads = True
-        self.testing_groupme = False
+        self.testing_groupme = True
 
         # paths
         self.cem_report_download_path_current_month = os.path.join(os.environ.get('HOME'), 'Downloads', 'FullScale_Report.PDF')

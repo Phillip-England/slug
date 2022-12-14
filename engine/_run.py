@@ -8,6 +8,7 @@ def run(self):
         if sys.argv[2] == '-catering': self.scripts.cfa_southroads.reports.catering(self)
         if sys.argv[2] == '-sales': self.scripts.cfa_southroads.reports.sales(self)
         if sys.argv[2] == '-cems': self.scripts.cfa_southroads.reports.cems(self)
+        if sys.argv[2] == '-bday': self.scripts.cfa_southroads.reports.bday(self)
 
     if sys.argv[1] == 'track': 
         if sys.argv[2] == '-sales': self.scripts.cfa_southroads.tracking.sales(self)
