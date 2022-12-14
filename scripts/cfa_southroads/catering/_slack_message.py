@@ -1,8 +1,6 @@
 
 def slack_message(engine):
 
-    engine.driver.maximize_window()
-
     engine.data.extract_deferred_orders(engine.config)
     message = engine.messages.catering_for_slack_groupme(engine.date, engine.data)
 

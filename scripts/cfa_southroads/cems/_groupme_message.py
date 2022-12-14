@@ -2,7 +2,6 @@ import os
 
 def groupme_message(engine):
 
-    engine.driver.maximize_window()
     engine.data.extract_cem_scores(engine.config)
 
     message = engine.messages.cems_for_slack_groupme(engine.data)

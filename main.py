@@ -23,4 +23,6 @@ engine = engine.engine(driver)
 
 if __name__ == '__main__':
     print("Initalizing Slug...")
+    engine.driver.maximize_window()
     engine.run()
+    engine.driver.close()

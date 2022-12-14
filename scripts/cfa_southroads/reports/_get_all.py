@@ -2,7 +2,6 @@ def get_all(engine):
     yesterday = engine.date.format_date(engine.date.get_past_date(1), 'x/x/xxxx')
     tomorrow = engine.date.format_date(engine.date.get_future_date(1), 'x/x/xxxx')
     engine.directories.clear_downloads()
-    engine.driver.maximize_window()
     engine.routes.cfa.login_home(engine.driver, engine.config)
     engine.routes.cfa.cem_report_builder(engine.driver, engine.config)
     engine.routes.cfa.login_service_point(engine.driver, engine.config)

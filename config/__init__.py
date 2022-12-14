@@ -5,7 +5,7 @@ class config:
     def __init__(self):
 
         #global settings
-        self.max_wait_time = 60 
+        self.max_wait_time = 20
         self.pyautogui_type_speed = 0.05
         self.slack_scheduled_message_time = '8:00 AM'
         self.testing_slack = True

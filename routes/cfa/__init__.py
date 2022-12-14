@@ -6,6 +6,7 @@ from ._daypart_activity import daypart_activity
 from ._sales_activity import sales_activity
 from ._cem_report_builder import cem_report_builder
 from ._catering_orders import catering_orders
+from ._hr_payroll import hr_payroll
 
 class cfa:
 
@@ -59,6 +60,11 @@ class cfa:
         self.catering_end_date_id = 'MainContent_BusDate2_I'
         self.catering_submit_id = 'MainContent_btnGenerateButton'
 
+        # hy payroll settings
+        self.hr_all_reports_id = 'allreports'
+        self.hr_bday_report_id = 'employeebirthdate'
+        self.hr_bday_loading_element_id = 'dempTable-0-0'
+
     # routes
     def login_home(self, driver, config): login_home(self, driver, config)
     def login_service_point(self, driver, config): login_service_point(self, driver, config)
@@ -66,3 +72,4 @@ class cfa:
     def sales_activity(self, driver, config, date): sales_activity(self, driver, config, date)
     def cem_report_builder(self, driver, config): cem_report_builder(self, driver, config)
     def catering_orders(self, driver, config, date): catering_orders(self, driver, config, date)
+    def hr_payroll(self, driver, config, date): hr_payroll(self, driver, config, date)
