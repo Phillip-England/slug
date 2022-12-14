@@ -1,0 +1,15 @@
+.env
+config/__pycache__
+data/__pycache__
+date/__pycache__
+directories/__pycache__
+engine/__pycache__
+messages/__pycache__
+routes/__pycache__
+routes/cfa/__pycache__
+routes/gforms/__pycache__
+routes/groupme/__pycache__
+routes/slack/__pycache__
+scripts/__pycache__
+scripts/cfa_southroads/__pycache__
+scripts/faith/__pycache__
